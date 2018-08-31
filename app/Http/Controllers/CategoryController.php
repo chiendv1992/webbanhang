@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Model\Category;
+use App\Http\Requests\Category\AddCategoryRequest;
 
 class CategoryController extends Controller
 {
@@ -13,7 +15,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-       return view ('backend.category.index');
+        $category = Category::all();
+        return view ('backend.category.index',['category'=>$category]);
     }
 
     /**
@@ -32,9 +35,14 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AddCategoryRequest $request)
     {
-        //
+        $category = new Category();
+//        dd($request);
+        $category->name = $request->name;
+        $category->status = $request->status;
+        $category->save();
+        return redirect()->route('admin.category.list')->with('success','Add Category Success !!');
     }
 
     /**
@@ -56,7 +64,8 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $category = Category::find($id);
+        return view('backend.category.edit',['category'=>$category]);
     }
 
     /**
@@ -68,7 +77,12 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $category = Category::find($id);
+//        dd($request);
+        $category->name = $request->name;
+        $category->status = $request->status;
+        $category->save();
+        return redirect()->route('admin.category.list')->with('success','Edit Category Success !!');
     }
 
     /**
@@ -79,6 +93,8 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $category=Category::find($id);
+        $category->delete($id);
+        return redirect('category/list')->with('success','You Deleted Successfully !!');
     }
 }

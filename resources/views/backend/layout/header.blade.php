@@ -8,7 +8,6 @@
 					<span class="icon-bar"></span>
 				</a>
 				<a class="brand" href="index.html"><span>Manager Shop</span></a>
-								
 				<!-- start: Header Menu -->
 				<div class="nav-no-collapse header-nav">
 					<ul class="nav pull-right">

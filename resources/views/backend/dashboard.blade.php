@@ -1,4 +1,7 @@
 @extends('backend.master')
+@section('title')
+    Dashboard
+    @endsection
 @section('content')
 	
 			<!-- start: Content -->

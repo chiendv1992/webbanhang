@@ -1,15 +1,18 @@
 @extends('backend.master')
+@section('title')
+    Add Category
+@endsection
 @section('content')
 	<!-- start: Content -->
 <div id="content" class="span10">
-	<ul class="breadcrumb">
-		<li>
-			<i class="icon-home"></i>
-			<a href="index.html">Home</a> 
-			<i class="icon-angle-right"></i>
-		</li>
-		<li><a href="#">Categoty</a></li>
-	</ul>
+    <ul class="breadcrumb">
+        <li>
+            <i class="icon-home"></i>
+            <a href="{{url('/dashboard')}}">Dashboard</a>
+            <i class="icon-angle-right"></i>
+        </li>
+        <li><a href="{{asset('/category/list')}}">Categoty</a></li>
+    </ul>
 	<div class="row-fluid sortable">
 				<div class="box span12">
 					<div class="box-header" data-original-title>
@@ -21,20 +24,32 @@
 						</div>
 					</div>
 					<div class="box-content">
-						<form class="form-horizontal">
+						<form method="post" action="{{url('/category/create')}}" class="form-horizontal">
 							{{csrf_field()}}
 							<fieldset>
 							  	<div class="control-group">
 									<label class="control-label" for="focusedInput">Name Category</label>
 									<div class="controls">
-								  		<input class="input-xlarge focused" id="focusedInput" type="text" name="category">
+								  		<input class="input-xlarge focused" id="focusedInput" type="text" name="name" value="{{ old('name',isset($category) ? $category['name'] : null) }}">
+                                        @if($errors->has('name'))
+                                            <p style="color: red"> {{$errors->first('name')}} </p>
+                                        @endif
 									</div>
 							  	</div>
-							 	<div class="form-actions">
-									<button type="submit" class="btn btn-primary">Save Category</button>
-									<button class="btn">Cancel</button>
-							  	</div>
-							</fieldset>
+                                <div class="control-group">
+                                    <label class="control-label" for="focusedInput">Status</label>
+                                    <div class="controls">
+                                        <select name="status">
+                                            <option value="1">Enable</option>
+                                            <option value="0">Disibale</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-actions">
+                                    <button type="submit" class="btn btn-primary">Save Category</button>
+                                    <button class="btn">Cancel</button>
+                                </div>
+                            </fieldset>
 						  </form>					
 					</div>
 				</div><!--/span-->

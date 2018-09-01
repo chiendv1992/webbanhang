@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Model\Category;
 use App\Http\Requests\Category\AddCategoryRequest;
+use App\Http\Requests\Category\EditCategoryRequest;
 
 class CategoryController extends Controller
 {
@@ -65,6 +66,7 @@ class CategoryController extends Controller
     public function edit($id)
     {
         $category = Category::find($id);
+//        dd($category);
         return view('backend.category.edit',['category'=>$category]);
     }
 
@@ -75,7 +77,7 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(EditCategoryRequest $request, $id)
     {
         $category = Category::find($id);
 //        dd($request);

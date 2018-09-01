@@ -12,6 +12,7 @@
 			<i class="icon-angle-right"></i>
 		</li>
 		<li><a href="{{asset('/category/list')}}">Categoty</a></li>
+        <li><a style="margin-left: 1100px; color: #2B5797; " href="{{asset('/category/create')}}">Add Categoty</a></li>
 	</ul>
     @if(session('success'))
         <div class="alert alert-success">

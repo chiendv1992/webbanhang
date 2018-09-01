@@ -24,8 +24,9 @@ Route::get('/logout',['as'=>'getLogout', 'uses'=>'Auth\LoginController@getLogout
 
 Route::group(['middleware'=>'auth'], function()
 	{
+        //	    dashboard
 		Route::get('/dashboard',['as'=>'dashboard', 'uses'=>'DashboardController@index']);
-
+//        category
 		Route::group(['prefix'=>'category'], function()
 			{
 				Route::get('list',['as'=>'admin.category.list','uses'=>'CategoryController@index']);
@@ -38,4 +39,29 @@ Route::group(['middleware'=>'auth'], function()
 				
 				Route::get('delete/{id}',['as'=>'admin.category.destroy','uses'=>'CategoryController@destroy']);			
 		});
+//		subcategory
+        Route::group(['prefix'=>'subcategory'], function()
+        {
+            Route::get('list',['as'=>'admin.subcategory.list','uses'=>'SubcategoryController@index']);
+
+            Route::get('create',['as'=>'admin.subcategory.create','uses'=>'SubcategoryController@create']);
+            Route::post('create',['as'=>'admin.subcategory.store','uses'=>'SubcategoryController@store']);
+
+            Route::get('edit/{id}',['as'=>'admin.subcategory.edit','uses'=>'SubcategoryController@edit']);
+            Route::post('edit/{id}',['as'=>'admin.subcategory.update','uses'=>'SubcategoryController@update']);
+
+            Route::get('delete/{id}',['as'=>'admin.subcategory.destroy','uses'=>'SubcategoryController@destroy']);
+        });
+    Route::group(['prefix'=>'product'], function()
+    {
+        Route::get('list',['as'=>'admin.product.list','uses'=>'ProductController@index']);
+
+        Route::get('create',['as'=>'admin.product.create','uses'=>'ProductController@create']);
+        Route::post('create',['as'=>'admin.product.store','uses'=>'ProductController@store']);
+
+        Route::get('edit/{id}',['as'=>'admin.product.edit','uses'=>'ProductController@edit']);
+        Route::post('edit/{id}',['as'=>'admin.product.update','uses'=>'ProductController@update']);
+
+        Route::get('delete/{id}',['as'=>'admin.product.destroy','uses'=>'ProductController@destroy']);
+    });
 	});

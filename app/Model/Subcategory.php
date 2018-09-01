@@ -9,16 +9,16 @@ class Subcategory extends Model
     protected $table='subcategory';
 	protected $primaryKey = 'id';
 
-	protected $fillable=['name','description','price','sale','quanlity','status','stock','image','content','salefrom','saleto'];
+	protected $fillable = ['name','cate_id','status'];
 
 	public $timestamps = false; 
 
 	public function category()
 	{
-		return $this->belongsTo('App\Model\Category','cat_id');
+		return $this->belongsTo('App\Model\Category','cate_id');
 	}
 	public function product()
 	{
-		return $this->hasMany('App\Model\Product','product_id');
+		return $this->hasMany('App\Model\Product','id');
 	}	
 }

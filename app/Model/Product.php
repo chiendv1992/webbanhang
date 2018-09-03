@@ -9,17 +9,17 @@ class Product extends Model
     protected $table='product';
 	protected $primaryKey = 'id';
 
-	protected $fillable=['name','subcate_id','slug','content','description','price','sale','qty','status','image','fromsale','tosale','status'];
+	protected $fillable = ['name','cate_id','slug','content','description','price','sale','qty','status','image','fromsale','tosale','status'];
 
 	public $timestamps = false; 
 
-	public function subcategory()
+	public function category()
 	{
-		return $this->belongsTo('App\Model\Subcategory','subcate_id');
+		return $this->belongsTo('App\Model\Category','cate_id');
 	}
-	public function productimages()
+	public function images()
 	{
-		return $this->hasMany('App\Model\Productimage','product_id');
+		return $this->hasMany('App\Model\Image','product_id');
 	}
 	public function orderdetail()
 	{

@@ -6,10 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Image extends Model
 {
-    protected $table='image_product';
+    protected $table='image';
 	protected $primaryKey = 'id';
 
-	protected $fillable=['images','produc_id'];
+	protected $fillable=['images','product_id'];
 
 	public $timestamps = false; 
 

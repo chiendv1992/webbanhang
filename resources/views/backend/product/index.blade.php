@@ -11,8 +11,8 @@
                 <a href="{{url('/dashboard')}}">Dashboard</a>
                 <i class="icon-angle-right"></i>
             </li>
-            <li><a href="{{asset('/product/list')}}">Subcategoty</a></li>
-            <li><a style="margin-left: 1100px; color: #2B5797; " href="{{asset('/product/create')}}">Add Subcategoty</a></li>
+            <li><a href="{{asset('/product/list')}}">Product</a></li>
+            <li><a style="margin-left: 1100px; color: #2B5797; " href="{{asset('/product/create')}}">Add Product</a></li>
         </ul>
         @if(session('success'))
             <div class="alert alert-success">
@@ -35,34 +35,34 @@
                         <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Subcategory </th>
+                            <th>Category </th>
                             <th>Name </th>
-                            <th>content</th>
-                            <th>description</th>
-                            <th>price</th>
-                            <th>sale</th>
-                            <th>tosale</th>
-                            <th>fromsale</th>
-                            <th>image</th>
+                            <th>Code </th>
+                            <th>Old Price</th>
+                            <th>Sale</th>
+                            <th>New Price</th>
+                            <th>Image</th>
                             <th>qty</th>
                             <th>Status</th>
-                            <th>Actions (View - Edit - Delete)</th>
+                            <th>Actions</th>
                         </tr>
                         </thead>
                         <tbody>
                         @foreach($product as $key => $pro)
+                            {{--{{dd($pro->category->name)}}--}}
                             <tr>
                                 <td>{{$pro->id}}</td>
-                                <td class="center">{{$pro->subcategory->name}}</td>
                                 <td class="center">{{$pro->category->name}}</td>
-                                <td class="center">{{$pro->name}}</td>
-                                <td class="center">{{$pro->content}}</td>
-                                <td class="center">{{$pro->description}}</td>
+                                <td class="center"><a href="{{asset('/product/show')}}/{{$pro->id}}">{{$pro->name}}</a></td>
+                                <td class="center">{{$pro->code}}</td>
                                 <td class="center">{{$pro->price}}</td>
                                 <td class="center">{{$pro->sale}}</td>
-                                <td class="center">{{$pro->tosale}}</td>
-                                <td class="center">{{$pro->fromsale}}</td>
-                                <td class="center">{{$pro->image}}</td>
+                                <td class="center">{{
+                                                        $pro->price - ($pro->sale * $pro->price)/100
+                                                        }}</td>
+                                <td class="center"><a href="{{asset('/product/show')}}/{{$pro->id}}">
+                                        <img src="{{asset('/upload/image/product/')}}/{{$pro->image}}" alt="" width="200px">
+                                    </a></td>
                                 <td class="center">{{$pro->qty}}</td>
                                 <td class="center">
                                     @if($pro->status==0)
@@ -72,13 +72,13 @@
                                     @endif
                                 </td>
                                 <td class="center">
-                                    <a class="btn btn-success" href="#" title="View">
+                                    <a class="btn btn-success" href="{{asset('/product/show')}}/{{$pro->id}}" title="View">
                                         <i class="halflings-icon white zoom-in"></i>
                                     </a>
-                                    <a class="btn btn-info" href="{{asset('subcategory/edit')}}/{{$pro->id}}">
+                                    <a class="btn btn-info" href="{{asset('/product/edit')}}/{{$pro->id}}">
                                         <i class="halflings-icon white edit" title="Edit"></i>
                                     </a>
-                                    <a class="btn btn-danger" href="{{asset('subcategory/delete')}}/{{$pro->id}}" title="Delete" onclick="xacnhanxoa()">
+                                    <a class="btn btn-danger" href="{{asset('/product/delete')}}/{{$pro->id}}" title="Delete" onclick="xacnhanxoa()">
                                         <i class="halflings-icon white trash"></i>
                                     </a>
                                 </td>

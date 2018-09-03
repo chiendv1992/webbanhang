@@ -7,12 +7,7 @@
                                 <i class="icon-tasks"></i><span class="hidden-tablet"> Category</span>
                             </a>
 						</li>
-						<li>
-                            <a href="{{asset('subcategory/list')}}">
-                                <i class="icon-eye-open"></i><span class="hidden-tablet"> SubCategory</span>
-                            </a>
-                        </li>
-						<li><a href="widgets.html"><i class="icon-bar-chart"></i><span class="hidden-tablet"> Product</span></a></li>
+						<li><a href="{{asset('product/list')}}"><i class="icon-bar-chart"></i><span class="hidden-tablet"> Product</span></a></li>
 						{{--<li>--}}
 							{{--<a class="dropmenu" href="#"><i class="icon-folder-close-alt"></i><span class="hidden-tablet"> Dropdown</span> <span class="label label-important"> 3 </span></a>--}}
 							{{--<ul>--}}
@@ -23,8 +18,9 @@
 						{{--</li>--}}
 					
 						<li><a href="chart.html"><i class="icon-list-alt"></i><span class="hidden-tablet"> Order</span></a></li>
-						<li><a href="typography.html"><i class="icon-font"></i><span class="hidden-tablet"> Typography</span></a></li>
 						<li><a href="gallery.html"><i class="icon-picture"></i><span class="hidden-tablet"> Banner</span></a></li>
+						<li><a href="gallery.html"><i class="icon-picture"></i><span class="hidden-tablet"> Customer</span></a></li>
+						<li><a href="gallery.html"><i class="icon-picture"></i><span class="hidden-tablet"> Customer</span></a></li>
 
 					</ul>
 				</div>

@@ -6,10 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Comment extends Model
 {
-    protected $table='customer';
+    protected $table='comment';
 	protected $primaryKey = 'id';
 
-	protected $fillable=['name','address','phone','	email'];
+	protected $fillable=['customer_id','product_id','content','status'];
 
 	public $timestamps = false; 
     public function order()

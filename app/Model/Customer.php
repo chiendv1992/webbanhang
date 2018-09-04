@@ -9,7 +9,7 @@ class Customer extends Model
     protected $table='customer';
 	protected $primaryKey = 'id';
 
-	protected $fillable=['name','address','phone','	email'];
+	protected $fillable=['name','address','phone','	email','password','gender'];
 
 	public $timestamps = false; 
     public function order()

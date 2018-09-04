@@ -9,7 +9,7 @@ class Order extends Model
     protected $table='order';
 	protected $primaryKey = 'id';
 
-	protected $fillable=['orderdate','shippeddate','total','status'];
+	protected $fillable=['orderdate','shippeddate'];
 
 	public $timestamps = false; 
 

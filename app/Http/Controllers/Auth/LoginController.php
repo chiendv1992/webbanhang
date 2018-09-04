@@ -28,7 +28,7 @@ class LoginController extends Controller
         }
         else
         {
-            return redirect()->back()->with('err','Login unsuccessful');
+            return redirect()->back()->with('err','Login Unsuccessful');
         }
         
     }

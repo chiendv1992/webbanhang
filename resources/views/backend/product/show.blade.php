@@ -149,7 +149,7 @@
                                                 <a class="btn btn-info" href="{{asset('product/edit')}}/{{$img->id}}">
                                                     <i class="halflings-icon white edit" title="Edit"></i>
                                                 </a>
-                                                <a class="btn btn-danger" href="{{asset('product/delete')}}/{{$img->id}}" title="Delete" onclick="xacnhanxoa()">
+                                                <a class="btn btn-danger" href="{{asset('product/deleteimage')}}/{{$img->id}}" title="Delete" onclick="xacnhanxoa()">
                                                     <i class="halflings-icon white trash"></i>
                                                 </a>
                                             </td>
@@ -158,7 +158,30 @@
                                 @endforeach
                                 </tbody>
                             </table>
+
                             </div>
+                        <form method="post" action="" enctype="multipart/form-data">
+                            {{csrf_field()}}
+                            <div class="span6">
+                                <label class="control-label" for="focusedInput"><h3>Detail Image</h3></label>
+                                @for($i=1;$i<=10;$i++)
+                                    <div class="controls">
+                                        <input class="input-xlarge focused" id="focusedInput" type="file" name="images[]" value="{{ old('images[]',isset($product) ? $product['images[]'] : null) }}">
+                                        @if($errors->has('images[]'))
+                                            <p style="color: red"> {{$errors->first('images[]')}} </p>
+                                        @endif
+                                    </div>
+                                @endfor
+                                <div>
+
+                                </div>
+                                <div class="">
+                                    <button type="submit" class="btn btn-primary">Save Category</button>
+                                    <button type="reset" class="btn btn-success">Reset</button>
+                                    <button class="btn">Cancel</button>
+                                </div>
+                            </div>
+                        </form>
                     </fieldset>
 
                 </div>

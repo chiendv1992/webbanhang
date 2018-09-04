@@ -18,9 +18,9 @@
 						{{--</li>--}}
 					
 						<li><a href="chart.html"><i class="icon-list-alt"></i><span class="hidden-tablet"> Order</span></a></li>
-						<li><a href="gallery.html"><i class="icon-picture"></i><span class="hidden-tablet"> Banner</span></a></li>
+						<li><a href="{{asset('banner/list')}}"><i class="icon-picture"></i><span class="hidden-tablet"> Banner</span></a></li>
 						<li><a href="gallery.html"><i class="icon-picture"></i><span class="hidden-tablet"> Customer</span></a></li>
-						<li><a href="gallery.html"><i class="icon-picture"></i><span class="hidden-tablet"> Customer</span></a></li>
+						<li><a href="gallery.html"><i class="icon-picture"></i><span class="hidden-tablet"> Comment</span></a></li>
 
 					</ul>
 				</div>

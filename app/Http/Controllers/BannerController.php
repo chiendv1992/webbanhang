@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Model\Banner;
 
 class BannerController extends Controller
 {
@@ -13,7 +14,8 @@ class BannerController extends Controller
      */
     public function index()
     {
-        //
+        $banner = Banner::all();
+        return view('backend.banner.index',['banner'=>$banner]);
     }
 
     /**
@@ -23,7 +25,7 @@ class BannerController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.banner.add');
     }
 
     /**
@@ -34,7 +36,19 @@ class BannerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $file_name ='';
+        // lấy tên cua image
+        $file_name = $request->file('image')->getClientOriginalName();
+//        dd($file_name);
+        // cop ảnh luu vao ht
+        $image = $request->file('image')->move('upload/images/banner/',$file_name);
+        $banner = new Banner();
+        $banner->title = $request->title;
+        $banner->images = $file_name;
+        $banner->status =$request->status;
+        $banner->save();
+        return redirect('banner/list')->with('success','You Save Image Banner Success !!');
+
     }
 
     /**
@@ -79,6 +93,8 @@ class BannerController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $banner=Banner::find($id);
+        $banner->delete($id);
+        return redirect('/banner/list')->with('success','You Deleted Banner Successfully !!');
     }
 }

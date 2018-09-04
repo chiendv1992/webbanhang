@@ -47,11 +47,29 @@ Route::group(['middleware'=>'auth'], function()
             Route::get('create',['as'=>'admin.product.create','uses'=>'ProductController@create']);
             Route::post('create',['as'=>'admin.product.store','uses'=>'ProductController@store']);
 
-            Route::get('show/{id}',['as'=>'admin.product.show','uses'=>'ProductController@show']);
             Route::get('edit/{id}',['as'=>'admin.product.edit','uses'=>'ProductController@edit']);
             Route::post('edit/{id}',['as'=>'admin.product.update','uses'=>'ProductController@update']);
 
             Route::get('delete/{id}',['as'=>'admin.product.destroy','uses'=>'ProductController@destroy']);
+
+            Route::get('show/{id}',['as'=>'admin.product.show','uses'=>'ProductController@show']);
+            Route::post('storeimage',['as'=>'admin.product.storeimage','uses'=>'ProductController@storeimage']);
+
+            Route::get('deleteimage/{$id}',['as'=>'admin.product.deleteimage','uses'=>'ProductController@deleteimage']);
+
+        });
+//    category
+		Route::group(['prefix'=>'banner'], function()
+        {
+            Route::get('list',['as'=>'admin.banner.list','uses'=>'BannerController@index']);
+
+            Route::get('create',['as'=>'admin.banner.create','uses'=>'BannerController@create']);
+            Route::post('create',['as'=>'admin.banner.store','uses'=>'BannerController@store']);
+
+            Route::get('edit/{id}',['as'=>'admin.banner.edit','uses'=>'BannerController@edit']);
+            Route::post('edit/{id}',['as'=>'admin.banner.update','uses'=>'BannerController@update']);
+
+            Route::get('delete/{id}',['as'=>'admin.banner.destroy','uses'=>'BannerController@destroy']);
         });
 	});
 

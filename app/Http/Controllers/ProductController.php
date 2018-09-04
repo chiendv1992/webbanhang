@@ -9,6 +9,8 @@ use App\Model\Category;
 use App\Http\Requests\Product\AddRequest;
 use App\Http\Requests\Product\EditRequest;
 use Illuminate\Http\UploadedFile;
+use File;
+
 
 class ProductController extends Controller
 {
@@ -163,5 +165,34 @@ class ProductController extends Controller
         $product=Product::find($id);
         $product->delete($id);
         return redirect('/product/list')->with('success','You Deleted Successfully !!');
+    }
+    public function storeimage(Request $request)
+    {
+        $product = new Product();
+        $product_id = $product->id;
+
+        if ($request->hasFile('images'))
+        {
+            foreach ($request->file('images') as $file)
+            {
+                $images = new Image();
+                if(isset($file))
+                {
+                    $images->images=$file->getClientOriginalName();
+                    $images->product_id=$product_id;
+                    $file->move('upload/images/product/detail/',$images->images);
+                    $images->save();
+                }
+            }
+        }
+        return redirect('backend.product.show')->with('success','You Save Images Success !!');
+
+    }
+    public function deleteimage($id)
+    {
+        $image = Image::find($id);
+        $image->delete();
+        return redirect()->route('admin.product.show')->with('success','You Deleted Successfully !!');
+
     }
 }

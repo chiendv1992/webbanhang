@@ -61,7 +61,7 @@
                                                         $pro->price - ($pro->sale * $pro->price)/100
                                                         }}</td>
                                 <td class="center"><a href="{{asset('/product/show')}}/{{$pro->id}}">
-                                        <img src="{{asset('/upload/image/product/')}}/{{$pro->image}}" alt="" width="200px">
+                                        <img src="{{asset('/upload/images/product/')}}/{{$pro->image}}" alt="" width="200px">
                                     </a></td>
                                 <td class="center">{{$pro->qty}}</td>
                                 <td class="center">

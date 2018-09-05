@@ -50,7 +50,7 @@ class ProductController extends Controller
         $file_name = $request->file('image')->getClientOriginalName();
 //        dd($file_name);
         // cop ảnh luu vao ht
-        $image = $request->file('image')->move('upload/image/product/',$file_name);
+        $image = $request->file('image')->move('upload/images/product/',$file_name);
         $product = new Product();
 
         $product->cate_id = $request->category;
@@ -88,18 +88,6 @@ class ProductController extends Controller
         return redirect('product/list')->with('success','You Save Product Success !!');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        $image= Image::all();
-        $product = Product::find($id);
-        return view('backend.product.show',['product'=>$product,'image'=>$image]);
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -127,17 +115,16 @@ class ProductController extends Controller
 
         $product=Product::find($id);
         $img_curr='upload/images/product/'.$request->input('img_curr');
-        if (!empty($request->file('images')))
+        if (!empty($request->file('image')))
         {
-            $file_name = $request->file('images')->getClientOriginalName();
+            $file_name = $request->file('image')->getClientOriginalName();
             $product->image=$file_name;
-            $request->file('images')->move('upload/images/product/',$file_name);
+            $request->file('image')->move('upload/images/product/',$file_name);
             if (File::exists($img_curr)) {
                 File::delete($img_curr);
             }
         }
 
-        $product =  Product::find($id);
         $product->cate_id = $request->category;
         $product->name = $request->name;
         $product->code = $request->code;
@@ -151,28 +138,12 @@ class ProductController extends Controller
         $product->qty = $request->qty;
         $product->status = $request->status;
         $product->save();
-        return redirect('/product/list')->with('success','You Edit Success !!');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        $product=Product::find($id);
-        $product->delete($id);
-        return redirect('/product/list')->with('success','You Deleted Successfully !!');
-    }
-    public function storeimage(Request $request)
-    {
-        $product = new Product();
-        $product_id = $product->id;
+        $product_id= $product->id;
+        // detail image
 
         if ($request->hasFile('images'))
         {
+
             foreach ($request->file('images') as $file)
             {
                 $images = new Image();
@@ -185,14 +156,31 @@ class ProductController extends Controller
                 }
             }
         }
-        return redirect('backend.product.show')->with('success','You Save Images Success !!');
-
+        return redirect('/product/list')->with('success','You Edit Success !!');
     }
-    public function deleteimage($id)
-    {
-        $image = Image::find($id);
-        $image->delete();
-        return redirect()->route('admin.product.show')->with('success','You Deleted Successfully !!');
 
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        $product=Product::find($id);
+//        $image = Image::all();
+//        if ($image->product_id==$product->id)
+//        {
+//            $image->delete();
+//        }
+        $product->delete($id);
+        return redirect('/product/list')->with('success','You Deleted Successfully !!');
+    }
+// detail image
+    public function show($id)
+    {
+        $image= Image::all();
+        $product = Product::find($id);
+        return view('backend.product.show',['product'=>$product,'image'=>$image]);
     }
 }

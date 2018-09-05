@@ -53,12 +53,23 @@ Route::group(['middleware'=>'auth'], function()
             Route::get('delete/{id}',['as'=>'admin.product.destroy','uses'=>'ProductController@destroy']);
 
             Route::get('show/{id}',['as'=>'admin.product.show','uses'=>'ProductController@show']);
-            Route::post('storeimage',['as'=>'admin.product.storeimage','uses'=>'ProductController@storeimage']);
 
-            Route::get('deleteimage/{$id}',['as'=>'admin.product.deleteimage','uses'=>'ProductController@deleteimage']);
 
         });
-//    category
+//    iamge product
+		Route::group(['prefix'=>'image'], function()
+        {
+
+
+            Route::get('create',['as'=>'admin.image.create','uses'=>'ImageController@create']);
+            Route::post('create',['as'=>'admin.image.store','uses'=>'ImageController@store']);
+
+            Route::get('edit/{id}',['as'=>'admin.image.edit','uses'=>'ImageController@edit']);
+            Route::post('edit/{id}',['as'=>'admin.image.update','uses'=>'ImageController@update']);
+
+            Route::get('delete/{id}',['as'=>'admin.image.destroy','uses'=>'ImageController@destroy']);
+        });
+		//banner
 		Route::group(['prefix'=>'banner'], function()
         {
             Route::get('list',['as'=>'admin.banner.list','uses'=>'BannerController@index']);

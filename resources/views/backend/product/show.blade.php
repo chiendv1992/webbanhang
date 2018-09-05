@@ -141,9 +141,9 @@
                                         <tr>
                                             <td>{{$img->id}}</td>
                                             <td class="center">{{$img->product->name}}</td>
-                                            <td class="center"><img src="{{asset('/upload/images/product/detail')}}/{{$img->images}}" alt="" width="300px"></td>
+                                            <td class="center"><img src="{{asset('/upload/images/product/detail')}}/{{$img->images}}" alt="" width="200px"></td>
                                             <td class="center">
-                                                <a class="btn btn-success" href="#" title="View">
+                                                <a class="btn btn-success" href="" title="Add">
                                                     <i class="halflings-icon white zoom-in"></i>
                                                 </a>
                                                 <a class="btn btn-info" href="{{asset('product/edit')}}/{{$img->id}}">
@@ -158,30 +158,8 @@
                                 @endforeach
                                 </tbody>
                             </table>
-
                             </div>
-                        <form method="post" action="" enctype="multipart/form-data">
-                            {{csrf_field()}}
-                            <div class="span6">
-                                <label class="control-label" for="focusedInput"><h3>Detail Image</h3></label>
-                                @for($i=1;$i<=10;$i++)
-                                    <div class="controls">
-                                        <input class="input-xlarge focused" id="focusedInput" type="file" name="images[]" value="{{ old('images[]',isset($product) ? $product['images[]'] : null) }}">
-                                        @if($errors->has('images[]'))
-                                            <p style="color: red"> {{$errors->first('images[]')}} </p>
-                                        @endif
-                                    </div>
-                                @endfor
-                                <div>
 
-                                </div>
-                                <div class="">
-                                    <button type="submit" class="btn btn-primary">Save Category</button>
-                                    <button type="reset" class="btn btn-success">Reset</button>
-                                    <button class="btn">Cancel</button>
-                                </div>
-                            </div>
-                        </form>
                     </fieldset>
 
                 </div>

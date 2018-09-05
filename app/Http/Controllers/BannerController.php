@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Model\Banner;
+use File;
 
 class BannerController extends Controller
 {
@@ -70,7 +71,8 @@ class BannerController extends Controller
      */
     public function edit($id)
     {
-        //
+        $banner = Banner::find($id);
+        return view('backend.banner.edit',['banner'=>$banner]);
     }
 
     /**
@@ -82,7 +84,22 @@ class BannerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $banner=Banner::find($id);
+        $img_curr='upload/images/banner/'.$request->input('img_curr');
+        if (!empty($request->file('images')))
+        {
+            $file_name = $request->file('images')->getClientOriginalName();
+            $banner->images=$file_name;
+            $request->file('images')->move('upload/images/banner/',$file_name);
+            if (File::exists($img_curr)) {
+                File::delete($img_curr);
+            }
+        }
+
+        $banner->title = $request->title;
+        $banner->status = $request->status;
+        $banner->save();
+        return redirect('/banner/list')->with('success','You Edit Success !!');
     }
 
     /**

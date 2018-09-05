@@ -9,7 +9,7 @@ class Image extends Model
     protected $table='image';
 	protected $primaryKey = 'id';
 
-	protected $fillable=['images','product_id'];
+	protected $fillable=['images','product_id','status'];
 
 	public $timestamps = false; 
 

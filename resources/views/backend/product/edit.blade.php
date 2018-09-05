@@ -173,24 +173,33 @@
                     <div class="box-content">
                         <fieldset>
                             <div class="control-group">
-                                <label class="control-label" for="focusedInput">Image present</label>
+                                <label class="control-label" for="focusedInput">Image</label>
                                 <div class="controls">
                                     <div class="span6">
-                                        <img src="{{asset('/upload/image/product/')}}/{{$product->image}}" alt="" width="200px">
+                                        <img src="{{asset('/upload/images/product/')}}/{{$product->image}}" alt="" width="200px">
                                         <input type="hidden" name="img_curr" value="{{$product->image}}">
+                                        <input class="input-xlarge focused" id="" type="file" name="image">
+                                        @if($errors->has('image'))
+                                            <p style="color: red"> {{$errors->first('image')}} </p>
+                                        @endif
                                     </div>
-                                </div>
-                            </div>
-                            <div class="control-group">
-                                <div class="controls">
                                     <div class="span6">
-                                        <input type="file" name="images">
+                                        <label class="control-label" for="focusedInput"><h3>Secondary Image</h3></label>
+                                        @for($i=1;$i<=10;$i++)
+                                            <div class="controls">
+                                                <input class="input-xlarge focused" id="focusedInput" type="file" name="images[]" value="{{ old('images[]',isset($product) ? $product['images[]'] : null) }}">
+                                                @if($errors->has('images[]'))
+                                                    <p style="color: red"> {{$errors->first('images[]')}} </p>
+                                                @endif
+                                            </div>
+                                        @endfor
                                     </div>
                                 </div>
                             </div>
                         </fieldset>
                     </div>
                 </div><!--/span-->
+
             </div><!--/row-->
             <div class="form-actions">
                 <button type="submit" class="btn btn-primary">Save Category</button>

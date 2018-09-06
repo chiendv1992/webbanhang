@@ -86,7 +86,7 @@
                                         </tr>
                                         <tr>
                                             <th>Image</th>
-                                            <td><img src="{{asset('/upload/image/product/')}}/{{$product->image}}" alt="" width="300px"></td>
+                                            <td><img src="{{asset('/upload/images/product/')}}/{{$product->image}}" alt="" width="300px"></td>
                                         </tr>
                                     </table>
                                 </div>

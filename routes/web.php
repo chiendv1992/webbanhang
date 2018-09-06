@@ -85,3 +85,4 @@ Route::group(['middleware'=>'auth'], function()
 	});
 
 Route::get('/',['as'=>'index','uses'=>'FrontendController@index']);
+Route::get('product/list/{id}',['as'=>'grid','uses'=>'FrontendController@grid']);

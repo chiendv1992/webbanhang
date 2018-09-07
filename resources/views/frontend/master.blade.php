@@ -46,14 +46,11 @@
     <![endif]-->
 </head>
 <body>
-
 @include('frontend.layout.header')
-
 
 @yield('content')
 
 @include('frontend.layout.footer')
-
 
 <!-- Jquery Js -->
 <script src="{{asset('frontend/js/jquery-1.11.3.min.js')}}"></script>

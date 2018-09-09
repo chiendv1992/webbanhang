@@ -94,13 +94,13 @@
                                     <div class="control-group hidden-phone">
                                         <label class="control-label" for="textarea2"><d>Descriotion</d></label>
                                         <div class="controls">
-                                            <textarea class="cleditor" id="textarea2" rows="3" name="description">{{$product->description}}</textarea>
+                                            <p class="cleditor" id="textarea2" rows="3" name="description">{!! $product->description !!}</p>
                                         </div>
                                     </div>
                                     <div class="control-group hidden-phone">
                                         <label class="control-label" for="textarea3">Content</label>
                                         <div class="controls">
-                                            <textarea class="cleditor" id="textarea3" rows="3" name="contents">{{$product->content}}</textarea>
+                                            <p >{!! $product->content!!}</p>
                                         </div>
                                     </div>
                                 </div>

@@ -1,4 +1,4 @@
-<div class="col-sm-3 col-left">
+
     <div class="block">
         <div class="title-group"><h2>Special Offer</h2></div>
         <div id="special-offer" class="owl-container">
@@ -108,4 +108,4 @@
             </div>
         </div><!-- /.owl-container -->
     </div><!-- /.block - Special offer -->
-</div><!-- /.col-left -->
+

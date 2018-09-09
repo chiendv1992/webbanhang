@@ -86,3 +86,11 @@ Route::group(['middleware'=>'auth'], function()
 
 Route::get('/',['as'=>'index','uses'=>'FrontendController@index']);
 Route::get('product/list/{id}',['as'=>'grid','uses'=>'FrontendController@grid']);
+Route::get('detail/product/{id}',['as'=>'grid','uses'=>'FrontendController@detail']);
+
+Route::get('purchase/{id}/{slug}',['as'=>'purchase','uses'=>'FrontendController@purchase']);
+Route::get('card',['as'=>'card','uses'=>'FrontendController@card']);
+Route::post('card',['as'=>'card','uses'=>'FrontendController@postcard']);
+
+
+Route::get('delete-card/{id}',['as'=>'deletecard','uses'=>'FrontendController@deletecard']);

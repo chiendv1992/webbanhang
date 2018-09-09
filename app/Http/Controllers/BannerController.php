@@ -95,6 +95,10 @@ class BannerController extends Controller
                 File::delete($img_curr);
             }
         }
+        else
+        {
+            $file_name = $request->input('img_curr');
+        }
 
         $banner->title = $request->title;
         $banner->status = $request->status;

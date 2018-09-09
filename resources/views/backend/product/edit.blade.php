@@ -153,7 +153,7 @@
                             <div class="control-group hidden-phone">
                                 <label class="control-label" for="textarea3">Content</label>
                                 <div class="controls">
-                                    <textarea class="cleditor" id="textarea3" rows="3" name="contents">{{ old('description',isset($product) ? $product['description'] : null) }}</textarea>
+                                    <textarea class="cleditor" id="textarea3" rows="3" name="contents">{{ old('content',isset($product) ? $product['content'] : null) }}</textarea>
                                 </div>
                             </div>
                         </fieldset>
@@ -179,9 +179,7 @@
                                         <img src="{{asset('/upload/images/product/')}}/{{$product->image}}" alt="" width="200px">
                                         <input type="hidden" name="img_curr" value="{{$product->image}}">
                                         <input class="input-xlarge focused" id="" type="file" name="image">
-                                        @if($errors->has('image'))
-                                            <p style="color: red"> {{$errors->first('image')}} </p>
-                                        @endif
+
                                     </div>
                                     <div class="span6">
                                         <label class="control-label" for="focusedInput"><h3>Secondary Image</h3></label>

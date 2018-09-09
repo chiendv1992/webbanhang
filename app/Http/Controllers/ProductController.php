@@ -71,7 +71,6 @@ class ProductController extends Controller
 
         if ($request->hasFile('images'))
         {
-
             foreach ($request->file('images') as $file)
             {
                 $images = new Image();
@@ -124,6 +123,10 @@ class ProductController extends Controller
                 File::delete($img_curr);
             }
         }
+        else
+        {
+            $file_name = $request->input('img_curr');
+        }
 
         $product->cate_id = $request->category;
         $product->name = $request->name;
@@ -134,6 +137,7 @@ class ProductController extends Controller
         $product->sale = $request->sale;
         $product->tosale = $request->tosale;
         $product->fromsale = $request->fromsale;
+
         $product->image = $file_name;
         $product->qty = $request->qty;
         $product->status = $request->status;

@@ -42,7 +42,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-3">
-                    <a href="#" class="logo"><img src="{{asset('frontend/images/logo-green.png')}}" alt=""></a>
+                    <a href="{{asset('/')}}" class="logo"><img src="{{asset('frontend/images/logo-green.png')}}" alt=""></a>
                 </div>
                 <div class="col-md-9">
                     <div class="support-client">
@@ -90,33 +90,28 @@
                         <div class="top-cart-title">
                             <a href="cart.html" class="dropdown-toggle" data-toggle="dropdown">
                                 your cart
-                                <span class="price">$45.00</span>
+                                <span class="price">{{$total}}</span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right">
                                 <div class="cart-listing">
+                                    @foreach($content as $ct)
                                     <div class="media">
-                                        <div class="media-left"><a href="#"><img src="images/accessories/11.jpg" alt="" class="img-responsive"></a></div>
+                                        <div class="media-left"><a href="#"><img src="{{asset('upload/images/product')}}/{{$ct->options->img}}" alt="" class="img-responsive"></a></div>
                                         <div class="media-body">
                                             <button type="button" class="remove-cart-item" >&times;</button>
-                                            <h4>Accumsan elit</h4>
-                                            <div class="mini-cart-qty">Qty:2</div>
-                                            <div class="mini-cart-price">$ 64.00</div>
+                                            <h4>{{$ct->name}}</h4>
+                                            <div class="mini-cart-qty">{{$ct->qty}}</div>
+                                            <div class="mini-cart-price">
+                                                {{number_format(($ct->price-($ct->price*$ct->sale)/100)*$ct->qty)}}
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="media">
-                                        <div class="media-left"><a href="#"><img src="images/accessories/13.jpg" alt="" class="img-responsive"></a></div>
-                                        <div class="media-body">
-                                            <button type="button" class="remove-cart-item" >&times;</button>
-                                            <h4>Accumsan elit</h4>
-                                            <div class="mini-cart-qty">Qty:2</div>
-                                            <div class="mini-cart-price">$ 64.00</div>
-                                        </div>
-                                    </div>
+                                        @endforeach
                                 </div><!-- /.cart-listing -->
-                                <div class="mini-cart-subtotal">Shipping: <span class="price">$5.00</span></div>
-                                <div class="mini-cart-subtotal">Total: <span class="price">$200.00</span></div>
+                                {{--<div class="mini-cart-subtotal">Shipping: <span class="price">{{$shiping}}</span></div>--}}
+                                <div class="mini-cart-subtotal">Total: <span class="price">{{$total}}</span></div>
                                 <div class="checkout-btn">
-                                    <a href="#" class="btn btn-default btn-md fwb">CHECK OUT</a>
+                                    <a href="{{url('card')}}" class="btn btn-default btn-md fwb">Detail Card</a>
                                 </div>
                             </div>
                         </div>

@@ -30,7 +30,6 @@
                             <th>Remove</th>
                             <th>Image</th>
                             <th>Product Name</th>
-                            <th>Edit</th>
                             <th>Quantity</th>
                             <th>Sale</th>
                             <th>Price</th>
@@ -50,7 +49,6 @@
                                 <a href="#">{{$nd->name}}</a>
 
                             </td>
-                            <td class="text-center"><a href="#">Edit</a></td>
                             <td class="qty">
                                 <div class="input-group">
                                         <span class="input-group-btn">
@@ -65,7 +63,7 @@
                             <td class="subtotal">{{number_format($nd->options->sale).'%'}}</td>
                             <td class="subtotal">{{number_format($nd->options->priceold)}}</td>
                             <td class="subtotal">{{number_format($nd->options->priceold*$nd->qty)}}</td>
-                            <td class="grandtotal">{{number_format($nd->price*$nd->qty) }}</td>
+                            <td class="grandtotal">{{number_format($nd->price*$nd->qty)}}</td>
                         </tr>
                             @endforeach
                         </tbody>
@@ -153,45 +151,4 @@
     </div>
 </div><!-- /.main -->
 
-<div class="brands">
-    <div class="container">
-        <div class="title-group1">
-            <h2>popular brand</h2>
-        </div>
-        <div id="brands" class="owl-container">
-            <div class="owl">
-                <div class='item'>
-                    <div class="item-innner">
-                        <a href="#" title=""><img src="images/brand/logo_brand5.png" alt="" /></a>
-                    </div>
-                </div>
-                <div class='item'>
-                    <div class="item-innner">
-                        <a href="#" title=""><img src="images/brand/logo_brand4.png" alt="" /></a>
-                    </div>
-                </div>
-                <div class='item'>
-                    <div class="item-innner">
-                        <a href="#" title=""><img src="images/brand/logo_brand3.png" alt="" /></a>
-                    </div>
-                </div>
-                <div class='item'>
-                    <div class="item-innner">
-                        <a href="#" title=""><img src="images/brand/logo_brand2.png" alt="" /></a>
-                    </div>
-                </div>
-                <div class='item'>
-                    <div class="item-innner">
-                        <a href="#" title=""><img src="images/brand/logo_brand1.png" alt="" /></a>
-                    </div>
-                </div>
-                <div class='item'>
-                    <div class="item-innner">
-                        <a href="#" title=""><img src="images/brand/logo_brand3.png" alt="" /></a>
-                    </div>
-                </div>
-            </div>
-        </div><!-- /#brands -->
-    </div>
-</div><!-- /.brands -->
 @endsection

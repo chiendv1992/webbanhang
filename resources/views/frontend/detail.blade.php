@@ -105,7 +105,7 @@
                                 {{--</div>--}}
                                 {{--<button type="submit" class="btn btn-danger btn-cart">Add to cart</button>--}}
                                 {{--<button type="button" class="btn btn-default btn-wishlist">Add to wishlist</button>--}}
-                                <button type="submit" class="btn btn-default btn-compare">Add to cart</button>
+                                <a href="{{asset('purchase/')}}/{{$productdetail->id}}/{{$productdetail->slug}}" class="btn btn-default btn-compare">Add to cart</a>
                             </form>
                         </div><!-- /.product-shop -->
                     </div>

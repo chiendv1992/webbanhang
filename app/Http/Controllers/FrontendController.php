@@ -21,19 +21,21 @@ class FrontendController extends Controller
     {
         $categories = Category::all();
         $pecialproduct = Product::orderBy('id', 'desc')->take(4)->get();
+
+        $content = Cart::content();
+        $total = Cart::total();
+        $subtotal = Cart::subtotal();
+
         View::share('categories',$categories);
         View::share('pecialproduct',$pecialproduct);
+        View::share('content',$content);
+        View::share('total',$total);
+        View::share('subtotal',$subtotal);
     }
 
 
     public function index()
     {
-        $content = Cart::content();
-        $total = Cart::total();
-        $subtotal = Cart::subtotal();
-        $shiping = 40000;
-
-//        dd($content);
         $clientssay = Product::take(5)->get();
         $bestseller = Product::take(3)->get();
         $hotsale = Product::take(3)->get();
@@ -54,10 +56,6 @@ class FrontendController extends Controller
                 'bestseller'=>$bestseller,
                 'hotsale'=>$hotsale,
                 'brands'=>$brands,
-                'content'=>$content,
-                'total'=>$total,
-                'subtotal'=>$subtotal,
-                'shiping'=>$shiping,
              ]);
     }
     public function grid($id)
@@ -140,13 +138,13 @@ class FrontendController extends Controller
             $orders_detail -> save();
         }
         Cart::destroy();
-    return redirect()->back();
+    return redirect()->back()->with('success','Order Success');
 
     }
     public function deletecard($id)
     {
         Cart::remove($id);
-        return redirect()->route('card')->with('success','Order Success');
+        return redirect()->route('card');
     }
 
 }

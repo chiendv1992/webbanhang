@@ -89,6 +89,9 @@ Route::get('product/list/{id}',['as'=>'grid','uses'=>'FrontendController@grid'])
 Route::get('detail/product/{id}',['as'=>'grid','uses'=>'FrontendController@detail']);
 
 Route::get('purchase/{id}/{slug}',['as'=>'purchase','uses'=>'FrontendController@purchase']);
+
+Route::get('contact',['as'=>'card','uses'=>'FrontendController@contact']);
+
 Route::get('card',['as'=>'card','uses'=>'FrontendController@card']);
 Route::post('card',['as'=>'card','uses'=>'FrontendController@postcard']);
 

@@ -84,13 +84,14 @@
                                     <div class='timer-item item'>
                                     <div class="item-inner">
                                         <div class="images-container">
-                                            <a href="#" title="Fusce aliquam" class="product-image"><img src="{{asset('upload/images/product/')}}/{{$hotdeal->image}}" alt="Fusce aliquam" /></a>
+                                            <a href="{{url('/detail/product')}}/{{$hotdeal->id}}" title="Fusce aliquam" class="product-image">
+                                                <img src="{{asset('upload/images/product/')}}/{{$hotdeal->image}}" alt="Fusce aliquam" /></a>
                                             <div class="box-timer">
                                                 <div class="countbox_1 timer-grid"></div>
                                             </div>
                                         </div>
                                         <div class="content-box">
-                                            <h2 class="product-name"><a href="#" title="Fusce aliquam">{{$hotdeal->name}}</a></h2>
+                                            <h2 class="product-name"><a href="{{url('/detail/product')}}/{{$hotdeal->id}}" title="Fusce aliquam">{{$hotdeal->name}}</a></h2>
                                             <div class="price-box">
                                                 <p class="special-price">
                                                     <span class="price-label">Special Price</span>
@@ -127,7 +128,7 @@
                                             {{--<div class="product_icon">--}}
                                                 {{--<div class='new-icon'><span>new </span></div>--}}
                                             {{--</div>--}}
-                                            <a href="#" title="Nunc facilisis" class="product-image">
+                                            <a href="{{url('/detail/product')}}/{{$fea->id}}" title="Nunc facilisis" class="product-image">
                                                 <img src="{{asset('upload/images/product/')}}/{{$fea->image}}" alt="Nunc facilisis" />
                                             </a>
                                             <div class="box-hover">
@@ -140,7 +141,7 @@
                                             </div>
                                         </div>
                                         <div class="des-container">
-                                            <h2 class="product-name"><a href="#" title="Nunc facilisis">{{$fea->name}}</a></h2>
+                                            <h2 class="product-name"><a href="{{url('/detail/product')}}/{{$fea->id}}" title="Nunc facilisis">{{$fea->name}}</a></h2>
                                             <div class="price-box">
                                                 <p class="special-price">
                                                     <span class="price-label">Special Price</span>
@@ -197,7 +198,7 @@
                                                         <div class='new-icon'><span>new</span></div>
                                                         <div class="sale-icon"><span>sale</span></div>
                                                     </div>
-                                                    <a href="#" title="Nunc facilisis" class="product-image">
+                                                    <a href="{{url('/detail/product')}}/{{$arri->id}}" title="Nunc facilisis" class="product-image">
                                                         <img src="{{asset('upload/images/product/')}}/{{$arri->image}}" alt="Nunc facilisis" />
                                                     </a>
                                                     <div class="box-hover">

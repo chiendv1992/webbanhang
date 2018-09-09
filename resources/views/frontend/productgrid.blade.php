@@ -34,8 +34,8 @@
                                     <div class="product_icon">
                                         <div class='new-icon'><span>new</span></div>
                                     </div>
-                                    <a href="#" title="Nunc facilisis" class="product-image">
-                                        <img src="{{asset('upload/images/product/')}}/{{$pro['img']['image']}}" alt="Nunc facilisis" />
+                                    <a href="{{url('/detail/product')}}/{{$pro->id}}" title="Nunc facilisis" class="product-image">
+                                        <img src="{{asset('upload/images/product/')}}/{{$pro->image}}" alt="Nunc facilisis" />
                                     </a>
                                     <div class="box-hover">
                                         <ul class="add-to-links">

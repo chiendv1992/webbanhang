@@ -23,6 +23,7 @@ class FrontendController extends Controller
         $pecialproduct = Product::orderBy('id', 'desc')->take(4)->get();
 
         $content = Cart::content();
+
         $total = Cart::total();
         $subtotal = Cart::subtotal();
 
@@ -90,9 +91,10 @@ class FrontendController extends Controller
         ]);
         $content = Cart::content();
         $rowId = $content->where('id', $id)->first()->rowId;
+        View::share('content',$content);
         Cart::setTax($rowId, 0);
 //        dd($content);
-        return redirect()->route('card',['content'=>$content]);
+        return redirect()->route('card');
 //
 
     }
@@ -101,8 +103,8 @@ class FrontendController extends Controller
         $content = Cart::content();
         $subtotal = Cart::subtotal();
         $total = Cart::total();
-
-        return view('frontend.card',['content'=>$content,'subtotal'=>$subtotal,'total'=>$total]);
+        View::share('content',$content);
+        return view('frontend.card',['subtotal'=>$subtotal,'total'=>$total]);
 
     }
     public function postcard(CheckoutRequest $request)
@@ -146,5 +148,8 @@ class FrontendController extends Controller
         Cart::remove($id);
         return redirect()->route('card');
     }
-
+    public function contact()
+    {
+        return view('frontend.contact');
+    }
 }

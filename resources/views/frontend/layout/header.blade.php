@@ -15,7 +15,7 @@
                         <ul class="dropdown-menu dropdown-menu-right">
                             <li><a title="My Account" href="account.html">My Account</a></li>
                             <li><a title="My Wishlist" href="wishlist.html">My Wishlist</a></li>
-                            <li><a title="My Cart" href="cart.html">My Cart</a></li>
+                            <li><a title="My Cart" href="{{url('/card')}}">My Cart</a></li>
                             <li><a title="Checkout" href="checkout.html">Checkout</a></li>
                             <li><a title="Testimonial" href="testimonial.html">Testimonial</a></li>
                         </ul>
@@ -87,35 +87,40 @@
                         <button type="submit" class="btn btn-danger"><span class="fa fa-search"></span></button>
                     </form>
                     <div class="mini-cart">
+                        <a href="{{url('/card')}}">
                         <div class="top-cart-title">
-                            <a href="cart.html" class="dropdown-toggle" data-toggle="dropdown">
-                                your cart
-                                <span class="price">{{$total}}</span>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right">
-                                <div class="cart-listing">
-                                    @foreach($content as $ct)
-                                    <div class="media">
-                                        <div class="media-left"><a href="#"><img src="{{asset('upload/images/product')}}/{{$ct->options->img}}" alt="" class="img-responsive"></a></div>
-                                        <div class="media-body">
-                                            <button type="button" class="remove-cart-item" >&times;</button>
-                                            <h4>{{$ct->name}}</h4>
-                                            <div class="mini-cart-qty">{{$ct->qty}}</div>
-                                            <div class="mini-cart-price">
-                                                {{number_format(($ct->price-($ct->price*$ct->sale)/100)*$ct->qty)}}
-                                            </div>
-                                        </div>
-                                    </div>
-                                        @endforeach
-                                </div><!-- /.cart-listing -->
+                            {{--<a href="{{url('/card')}}" class="dropdown-toggle" data-toggle="dropdown">--}}
+                                {{--your cart--}}
+                                {{--<span class="price">{{$total}}</span>--}}
+                            {{--</a>--}}
+                            {{--<div class="dropdown-menu dropdown-menu-right">--}}
+                                {{--<div class="cart-listing">--}}
+
+                                    {{--<div class="media">--}}
+                                        {{--<div class="media-left">--}}
+                                            {{--<a href="#"><img src="{{asset('upload/images/product')}}/{{$ct->options->img}}" alt="" class="img-responsive"></a>--}}
+                                        {{--</div>--}}
+                                        {{--<div class="media-body">--}}
+                                            {{--<button type="button" class="remove-cart-item" >&times;</button>--}}
+                                            {{--<h4>{{$ct->name}}</h4>--}}
+                                            {{--<div class="mini-cart-qty">{{$ct->qty}}</div>--}}
+                                            {{--<div class="mini-cart-price">--}}
+                                                {{--{{number_format(($ct->price-($ct->price*$ct->sale)/100)*$ct->qty)}}--}}
+                                            {{--</div>--}}
+                                        {{--</div>--}}
+                                    {{--</div>--}}
+
+                                {{--</div><!-- /.cart-listing -->--}}
                                 {{--<div class="mini-cart-subtotal">Shipping: <span class="price">{{$shiping}}</span></div>--}}
-                                <div class="mini-cart-subtotal">Total: <span class="price">{{$total}}</span></div>
-                                <div class="checkout-btn">
-                                    <a href="{{url('card')}}" class="btn btn-default btn-md fwb">Detail Card</a>
-                                </div>
-                            </div>
+                                {{--<div class="mini-cart-subtotal">Total: <span class="price">{{$total}}</span></div>--}}
+                                {{--<div class="checkout-btn">--}}
+                                    {{--<a href="{{url('card')}}" class="btn btn-default btn-md fwb">Detail Card</a>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
                         </div>
+                        </a>
                     </div>
+
                 </div>
             </div>
             <div class="row">
@@ -146,7 +151,7 @@
                         <li><a href="#">Service</a></li>
                         <li><a href="#">Introduce</a></li>
                         <li><a href="#">Introduce</a></li>
-                        <li><a href="#">Contact</a></li>
+                        <li><a href="{{url('/contact')}}">Contact</a></li>
                         <li><a href="#">new arrivals</a></li>
                     </ul>
                 </div>

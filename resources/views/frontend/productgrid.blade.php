@@ -27,7 +27,8 @@
                <hr>
                 <div class="row products">
                     @foreach($product as $key=>$pro)
-                        <div class="col-md-3 col-sm-6">
+                        @if($cate->id == $pro->cate_id)
+                            <div class="col-md-3 col-sm-6">
                         <div class='productslider-item item'>
                             <div class="item-inner">
                                 <div class="images-container">
@@ -68,6 +69,7 @@
                             </div>
                         </div>
                     </div>
+                        @endif
                     @endforeach
                 </div><!-- /.product -->
                 {{$product->links()}}

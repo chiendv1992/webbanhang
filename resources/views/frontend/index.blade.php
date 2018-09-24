@@ -9,7 +9,7 @@
         <div id="ma-inivoslider-banner7" class="slides">
             @foreach($banner as $key => $bn)
                 @if($bn->status == 1)
-                    <img src="{{asset('/upload/images/banner/')}}/{{$bn->images}}" class="dn" alt="" title="{{$bn->title}}"  />
+                    <img src="{{asset('/upload/images/banner/')}}/{{$bn->images}}" class="dn" alt=""   />
                 @endif
 
             @endforeach

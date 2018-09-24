@@ -82,6 +82,15 @@ Route::group(['middleware'=>'auth'], function()
 
             Route::get('delete/{id}',['as'=>'admin.banner.destroy','uses'=>'BannerController@destroy']);
         });
+		Route::group(['prefix'=>'order'], function()
+        {
+            Route::get('list',['as'=>'admin.order.list','uses'=>'OrderController@index']);
+
+            Route::get('show/{id}',['as'=>'admin.order.edit','uses'=>'OrderController@show']);
+            Route::post('show/{id}',['as'=>'admin.order.update','uses'=>'OrderController@update']);
+
+            Route::get('delete/{id}',['as'=>'admin.order.destroy','uses'=>'OrderController@destroy']);
+        });
 	});
 
 Route::get('/',['as'=>'index','uses'=>'FrontendController@index']);

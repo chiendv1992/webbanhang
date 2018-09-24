@@ -22,7 +22,7 @@
                         <div class="col-sm-5">
                             <div class="product-img-box">
                                 <p class="product-image">
-                                    <a href="images/products/1.jpg" class="cloud-zoom" id="ma-zoom1">
+                                    <a href="{{asset('upload/images/product')}}/{{$productdetail->image}}" class="cloud-zoom" id="ma-zoom1">
                                         <img src="{{asset('upload/images/product')}}/{{$productdetail->image}}" alt="Fusce aliquam" title="Fusce aliquam" />
                                     </a>
                                 </p>
@@ -31,7 +31,8 @@
                                         @foreach($images as $image)
                                             @if($image->product_id == $productdetail->id)
                                                 <li class="thumbnail-item">
-                                                    <a href="" class="cloud-zoom-gallery" title="" name="images/products/1.jpg" rel="useZoom: 'ma-zoom1', smallImage: 'images/products/1.jpg'">
+                                                    <a href="" class="cloud-zoom-gallery" title="" name="{{asset('upload/images/product/detail/')}}/{{$image->images}}"
+                                                       rel="useZoom: 'ma-zoom1', smallImage: '{{asset('upload/images/product/detail/')}}/{{$image->images}}'">
                                                         <img src="{{asset('upload/images/product/detail/')}}/{{$image->images}}" alt="" />
                                                     </a>
                                                 </li>

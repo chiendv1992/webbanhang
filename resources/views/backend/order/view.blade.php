@@ -42,13 +42,14 @@
                             <th>Total</th>
                             <th>QTY</th>
                             <th>Status</th>
-                            <th>Status</th>
                             <th>Sale</th>
+                            <th>Status</th>
                             <th>Actions (View - Edit - Delete)</th>
                         </tr>
                         </thead>
                         <tbody>
                         @foreach($orderdetails as $key => $orderdetail)
+                            @if($orders->id == $orderdetail->order_id)
                             <tr>
                                 <td>{{$orderdetail->id}}</td>
                                 <td class="center">{{$orderdetail->product->name}}</td>
@@ -81,6 +82,7 @@
 
                                 </td>
                             </tr>
+                            @endif
                         @endforeach
                         </tbody>
                     </table>

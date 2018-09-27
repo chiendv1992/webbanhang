@@ -33,13 +33,6 @@ class RegisterController extends Controller
                 'username'=>'required',
                 'email'=>'required|email',
                 'password'=>'required|min:8',
-            ],
-            [
-                'username.required' =>' Bạn Chưa Nhập Tên',
-                'email.required' =>' Bạn Chưa email',
-                'email.email' =>' Email Không Đúng Định Dạng',
-                'password.required' =>' Bạn Chưa Mật Khẩu',
-                'password.min' =>' Mật Khẩu Ít Nhất Là 8 Ký Tự'
             ]);
 
 
@@ -48,8 +41,8 @@ class RegisterController extends Controller
         // Check username available
 
         if(isset($user)){
-            $errors = new MessageBag(['email' => 'Email đã tồn tại']);
-            return redirect()->back()->withInput()->withErrors($errors);
+            $errors = 'Email already exists';
+            return redirect()->back()->withInput()->with('err',$errors);
         }
 
         $users = new User();

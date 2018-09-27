@@ -38,7 +38,6 @@
                                 <label class="control-label" for="focusedInput">Category</label>
                                 <div class="controls">
                                     <select name="category">
-                                        <option value="0" selected="selected" disabled="disabled">-- Select Subcategory --</option>
                                         @foreach($category as $key=>$cate)
                                             <option value='{{$cate->id}}'>{{$cate->name}}</option>
                                         @endforeach
@@ -139,13 +138,17 @@
                         <div class="control-group hidden-phone">
                             <label class="control-label" for="textarea2"><d>Descriotion</d></label>
                             <div class="controls">
-                                <textarea class="cleditor" id="textarea2" rows="3" name="description"></textarea>
+                                <textarea class="cleditor" id="textarea2" rows="3" name="description">
+                                    {{ old('description',isset($product) ? $product['description'] : null) }}
+                                </textarea>
                             </div>
                         </div>
                         <div class="control-group hidden-phone">
                             <label class="control-label" for="textarea3">Content</label>
                             <div class="controls">
-                                <textarea class="cleditor" id="textarea3" rows="3" name="contents"></textarea>
+                                <textarea class="cleditor" id="textarea3" rows="3" name="contents">
+                                    {{ old('contents',isset($product) ? $product['contents'] : null) }}
+                                </textarea>
                             </div>
                         </div>
                     </fieldset>

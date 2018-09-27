@@ -21,20 +21,13 @@ class FrontendController extends Controller
     {
         $categories = Category::all();
         $pecialproduct = Product::orderBy('id', 'desc')->take(4)->get();
-
-        $content = Cart::content();
-
-        $total = Cart::total();
-        $subtotal = Cart::subtotal();
+        $top = Product::orderBy('id', 'desc')->take(4)->get();
 
         View::share('categories',$categories);
         View::share('pecialproduct',$pecialproduct);
-        View::share('content',$content);
-        View::share('total',$total);
-        View::share('subtotal',$subtotal);
+        View::share('top',$top);
+
     }
-
-
     public function index()
     {
         $clientssay = Product::take(5)->get();
@@ -68,11 +61,15 @@ class FrontendController extends Controller
     public function detail($id)
     {
         $images = Image::all();
+        $usell = Product::take(8)->get();
+        $related = Product::take(5)->get();
         $productdetail = Product::find($id);
         return view('frontend.detail',
             [
                 'productdetail'=> $productdetail,
                 'images'=> $images,
+                'usell'=>$usell,
+                'related'=>$related
             ]);
     }
     public function purchase($id)
@@ -119,6 +116,7 @@ class FrontendController extends Controller
         $customer->address = $request->address;
         $customer->phone = $request->phone;
         $customer->gender = $request->gender;
+        $customer->status = 0;
         $customer->save();
 
         $orders = new Order();

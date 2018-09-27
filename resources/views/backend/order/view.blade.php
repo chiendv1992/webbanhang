@@ -31,6 +31,95 @@
                 </div>
 
                 <div class="box-content">
+                    <form action="" method="post">
+                        {{csrf_field()}}
+                    <table class="table ">
+                        <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th>Name </th>
+                            <th>Email</th>
+                            <th>Address</th>
+                            <th>Phone</th>
+                            <th>Type</th>
+                            <th>Gender</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>{{$orders->id}}</td>
+                            <td class="center">{{$orders->customer->name}}</td>
+                            <td class="center">{{$orders->customer->email}}</td>
+                            <td class="center">{{$orders->customer->address}}</td>
+                            <td class="center">{{$orders->customer->phone}}</td>
+                            <td class="center">
+                                @if($orders->type==1)
+                                    {{'Direct payment'}}
+                                @else
+                                    {{'Payment via card'}}
+                                @endif
+                            </td>
+                            <td class="center">
+                                @if($orders->customer->gender==1)
+                                    {{'Male'}}
+                                @else
+                                    {{'Female'}}
+                                @endif
+                            </td>
+                            <td class="center">
+                                @if($orders->type==1)
+                                    <select name="status" id="">
+                                        @if($orders->status==0)
+                                            <option value="0" selected="selected">Success</option>
+                                            <option value="1">Pending</option>
+                                            <option value="2">Appro</option>
+                                            <option value="3">Cancel</option>
+                                        @elseif($orders->status==1)
+                                            <option value="0" >Success</option>
+                                            <option value="1" selected="selected">Pending</option>
+                                            <option value="2">Appro</option>
+                                            <option value="3">Cancel</option>
+                                        @elseif($orders->status==2)
+                                            <option value="0">Success</option>
+                                            <option value="1">Pending</option>
+                                            <option value="2"selected="selected">Appro</option>
+                                            <option value="3">Cancel</option>
+                                        @else
+                                            <option value="0">Success</option>
+                                            <option value="1">Pending</option>
+                                            <option value="2">Appro</option>
+                                            <option value="3" selected="selected">Cancel</option>
+                                        @endif
+                                    </select>
+                                @else
+                                    <span class="label label-warning">successful</span>
+                                @endif
+                            </td>
+                            <td class="center">
+                                <input type="submit" class="btn btn-primary" value="Update">
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    </form>
+                </div>
+            </div><!--/span-->
+        </div><!--/row-->\
+        <div class="row-fluid sortable">
+            <div class="box span12">
+                <div class="box-header" data-original-title>
+                    <h2><i class="halflings-icon white user"></i><span class="break"></span>List Order</h2>
+                    <div class="box-icon">
+                        <a href="#" class="btn-setting"><i class="halflings-icon white wrench"></i></a>
+                        <a href="#" class="btn-minimize"><i class="halflings-icon white chevron-up"></i></a>
+                        <a href="#" class="btn-close"><i class="halflings-icon white remove"></i></a>
+                    </div>
+                </div>
+
+                <div class="box-content">
+                    <hr>
                     <table class="table table-striped table-bordered bootstrap-datatable datatable">
                         <thead>
                         <tr>
@@ -41,9 +130,7 @@
                             <th>Image</th>
                             <th>Total</th>
                             <th>QTY</th>
-                            <th>Status</th>
                             <th>Sale</th>
-                            <th>Status</th>
                             <th>Actions (View - Edit - Delete)</th>
                         </tr>
                         </thead>
@@ -56,22 +143,9 @@
                                 <td class="center">{{$orderdetail->order->date_orders}}</td>
                                 <td class="center">{{$orderdetail->order->total}}</td>
                                 <td class="center">{{$orderdetail->product->image}}</td>
-                                <td class="center">{{$orderdetail->order->status}}</td>
                                 <td class="center">{{$orderdetail->order->type}}</td>
                                 <td class="center">{{$orderdetail->order->qty}}</td>
                                 <td class="center">{{$orderdetail->product->sale}}</td>
-                                <td class="center">
-                                    @if($orderdetail->status==0)
-                                        <span class="label label-warning">Pending</span>
-                                    @elseif($orderdetail->status==1)
-                                        <span class="label label-success">successful</span>
-                                    @elseif($orderdetail->status==2)
-                                        <span class="label label-info">appro</span>
-                                    @else
-                                        <span class="label label-primary">cancel</span>
-                                    @endif
-                                </td>
-
                                 <td class="center">
                                     <a class="btn btn-info" href="{{asset('order/edit')}}/{{$orderdetail->id}}">
                                         <i class="halflings-icon white edit" title="Edit"></i>

@@ -55,18 +55,23 @@
                                 <td class="center">{{$order->customer->email}}</td>
                                 <td class="center">{{$order->date_orders}}</td>
                                 <td class="center">
-                                    @if($order->status==0)
-                                        <span class="label label-warning">Pending</span>
-                                    @elseif($order->status==1)
-                                        <span class="label label-success">successful</span>
-                                    @elseif($order->status==2)
-                                        <span class="label label-info">appro</span>
+                                    @if($order->type==1)
+                                        @if($order->status==0)
+                                            <span class="label label-warning">successful</span>
+                                        @elseif($order->status==1)
+                                            <span class="label label-success">Pending</span>
+                                        @elseif($order->status==2)
+                                            <span class="label label-info">appro</span>
+                                        @else
+                                            <span class="label label-primary">cancel</span>
+                                        @endif
                                     @else
-                                        <span class="label label-primary">cancel</span>
+                                        <span class="label label-warning">successful</span>
                                     @endif
+
                                 </td>
                                 <td class="center">
-                                    @if ($order->status==0)
+                                    @if ($order->type==0)
                                         {{'Payment via card'}}
                                      @else
                                         {{'Direct payment'}}

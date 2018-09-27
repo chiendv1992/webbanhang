@@ -9,7 +9,7 @@ class Category extends Model
    	protected $table='category';
 	protected $primaryKey = 'id';
 
-	protected $fillable = ['name','status'];
+	protected $fillable = ['id','name','status','created_at','updated_at'];
 
 	public $timestamps = false; 
 	public function product()

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Model\Image;
+use App\Model\Product;
 use Illuminate\Http\Request;
 use App\Model\Category;
 use App\Http\Requests\Category\AddCategoryRequest;
@@ -96,6 +98,20 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         $category=Category::find($id);
+        $product = Product::All();
+        $image = Image::All();
+        foreach ($product as $pro)
+        {
+            if ($pro->cate_id == $category->id)
+            {
+                foreach ($image as $img) {
+                    if ($pro->id == $img->product_id) {
+                        $img->delete();
+                    }
+                }
+                $pro->delete();
+            }
+        }
         $category->delete($id);
         return redirect('/category/list')->with('success','You Deleted Successfully !!');
     }

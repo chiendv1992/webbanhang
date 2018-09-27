@@ -14,7 +14,16 @@
 	<div class="row"> 
   	<div class="col-xs-12 col-sm-12 col-md-4 well well-sm col-md-offset-4"> 
    	<legend><a href="http://hocwebgiare.com/"><i class="glyphicon glyphicon-globe"></i></a> Register!
-   	</legend> 
+   	</legend>
+        @if(session('err'))
+            <div class="alert alert-danger">
+                {{session('err')}}
+            </div>
+        @elseif(session('success'))
+            <div class="alert alert-success">
+                {{session('success')}}
+            </div>
+            @endif </p>
    	<form action="{{asset('backend/register')}}" method="post" class="form" role="form">  
    	{{csrf_field()}}   	
      	<input class="form-control" name="username" placeholder="Full Name"  type="text">

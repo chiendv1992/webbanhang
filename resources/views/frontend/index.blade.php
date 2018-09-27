@@ -211,22 +211,24 @@
                                                     </div>
                                                 </div>
                                                 <div class="des-container">
-                                                    <h2 class="product-name"><a href="#" title="Nunc facilisis">Demonstraverunt lectores</a></h2>
+                                                    <h2 class="product-name"><a href="{{url('/detail/product')}}/{{$arri->id}}" title="Nunc facilisis">{{$arri->name}}</a></h2>
                                                     <div class="price-box">
                                                         <p class="special-price">
                                                             <span class="price-label">{{$arri->price}}</span>
-                                                            <span class="price">$169.99</span>
+                                                            <span class="price">{{$arri->price - ($arri->sale*$arri->price)/100}}</span>
                                                         </p>
                                                         <p class="old-price">
                                                             <span class="price-label">Regular Price: </span>
-                                                            <span class="price">$189.00</span>
+                                                            @if($arri->sale!=0)
+                                                                <span class="price">{{$arri->price}}</span>
+                                                            @endif
                                                         </p>
                                                     </div>
                                                     <div class="ratings">
                                                         <div class="rating-box">
                                                             <div class="rating" style="width:67%"></div>
                                                         </div>
-                                                        <span class="amount"><a href="#">3 Review(s)</a></span>
+                                                        <span class="amount"><a href="#"></a></span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -489,99 +491,7 @@
 
         </div><!-- /.container -->
     </div><!-- /.main -->
-    <div class="catlist">
-        <div class="container">
-            <div class="title-group1">
-                <h2>Top Categories</h2>
-            </div>
-            <div class="row">
-                <div class="col-md-3 col-sm-6">
-                    <div class="row">
-                        <div class="col-xs-6">
-                            <div class="image-cat">
-                                <a href="#/"><img alt="Women" src="images/accessories/img-09.jpg"></a>
-                            </div>
-                        </div>
-                        <div class="col-xs-6">
-                            <div class="name-cat"><h3>Women</h3></div>
-                            <a class="view-more" href="#">view more</a>
-                        </div>
-                    </div>
-                    <div class="list-cat">
-                        <ul>
-                            <li><a href="#">Batteries &amp; Chargers</a></li>
-                            <li><a href="#">Headphone, Headset</a></li>
-                            <li><a href="#">Home Audio</a></li>
-                            <li><a href="#">Mp3 Player Accessories</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="row">
-                        <div class="col-xs-6">
-                            <div class="image-cat">
-                                <a href="#/"><img alt="Men" src="images/accessories/img-10.jpg"></a>
-                            </div>
-                        </div>
-                        <div class="col-xs-6">
-                            <div class="name-cat"><h3>Men</h3></div>
-                            <a class="view-more" href="#">view more</a>
-                        </div>
-                    </div>
-                    <div class="list-cat">
-                        <ul>
-                            <li><a href="#">Men Watches</a></li>
-                            <li><a href="#">Wedding Rings</a></li>
-                            <li><a href="#">Earring</a></li>
-                            <li><a href="#">Necklaces</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="row">
-                        <div class="col-xs-6">
-                            <div class="image-cat">
-                                <a href="#/"><img alt="shoes & Bags" src="images/accessories/img-11.jpg"></a>
-                            </div>
-                        </div>
-                        <div class="col-xs-6">
-                            <div class="name-cat"><h3>shoes &amp; Bags</h3></div>
-                            <a class="view-more" href="#">view more</a>
-                        </div>
-                    </div>
-                    <div class="list-cat">
-                        <ul>
-                            <li><a href="#">Accessories for iPhone</a></li>
-                            <li><a href="#">Accessories for iPad</a></li>
-                            <li><a href="#">Accessories for Tablet PC</a></li>
-                            <li><a href="#">Tablet PC</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="row">
-                        <div class="col-xs-6">
-                            <div class="image-cat">
-                                <a href="#/"><img alt="Accessories" src="images/accessories/img-12.jpg"></a>
-                            </div>
-                        </div>
-                        <div class="col-xs-6">
-                            <div class="name-cat"><h3>Accessories</h3></div>
-                            <a class="view-more" href="#">view more</a>
-                        </div>
-                    </div>
-                    <div class="list-cat">
-                        <ul>
-                            <li><a href="#">Walkera</a></li>
-                            <li><a href="#">Fpv System &amp; Parts</a></li>
-                            <li><a href="#">RC Cars &amp; Parts</a></li>
-                            <li><a href="#">Helicopters &amp; Part</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div><!-- /.catlist -->
+    @include('frontend.layout.topproduct')
 
     <div class="brands">
         <div class="container">

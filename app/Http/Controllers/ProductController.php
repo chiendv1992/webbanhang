@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Model\Image;
+use App\Model\Orderdetail;
 use Illuminate\Http\Request;
 use App\Model\Product;
 use App\Model\Category;
@@ -172,11 +173,23 @@ class ProductController extends Controller
     public function destroy($id)
     {
         $product=Product::find($id);
-//        $image = Image::all();
-//        if ($image->product_id==$product->id)
-//        {
-//            $image->delete();
-//        }
+        $image = Image::all();
+        $orderdetail = Orderdetail::all();
+        foreach ($image as $img)
+        {
+            if ($img->product_id == $product->id)
+            {
+                $img->delete();
+            }
+        }
+        foreach ($orderdetail as $order)
+        {
+            if ($order->product_id == $product->id)
+            {
+                $order->delete();
+            }
+        }
+
         $product->delete($id);
         return redirect('/product/list')->with('success','You Deleted Successfully !!');
     }

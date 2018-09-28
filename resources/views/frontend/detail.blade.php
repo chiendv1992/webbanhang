@@ -126,6 +126,7 @@
                         <ul class="nav nav-tabs">
                             <li class="active"><a href="#product-desc" data-toggle="tab">PRODUCT DESCRIPTION</a></li>
                             <li><a href="#product-review" data-toggle="tab">CONTENT</a></li>
+                            {{--<li><a href="#product-reviews" data-toggle="tab">CONTENT</a></li>--}}
                         </ul>
                         <div class="tab-content">
                             <div class="tab-pane active" id="product-desc">
@@ -134,7 +135,9 @@
                             <div class="tab-pane" id="product-review">
                                 {!! $productdetail->content!!}
                             </div>
-
+                            {{--<div class="tab-pane" id="product-reviews">--}}
+                                {{--{!! $productdetail->content!!}--}}
+                            {{--</div>--}}
                         </div>
                     </div><!-- /.product-tab -->
                 </div><!-- /.product-view -->

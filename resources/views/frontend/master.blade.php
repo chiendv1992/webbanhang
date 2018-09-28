@@ -65,6 +65,8 @@
 <!-- Custom Js -->
 <script src="{{asset('frontend/js/custom.js')}}"></script>
 
+<script src="{{asset('frontend/js/mycrip.js')}}"></script>
+
 <script type="text/javascript">
     /* Main Slideshow */
     jQuery(window).load(function() {

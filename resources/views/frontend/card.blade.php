@@ -27,10 +27,12 @@
                     <table class="table custom-table">
                         <thead>
                         <tr class="first last">
-                            <th>Remove</th>
+
                             <th>Image</th>
                             <th>Product Name</th>
                             <th>Quantity</th>
+                            <th>Remove</th>
+                            <th>Update</th>
                             <th>Sale</th>
                             <th>Price</th>
                             <th>Total</th>
@@ -38,40 +40,67 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($content as $key => $nd)
-                            {{--{{  dd($nd)}}--}}
-                        <tr>
-                            <td class="text-center"><a class="btn-remove" href="{{url('delete-card')}}/{{$nd->rowId}}"><span class="fa fa-trash-o"></span></a></td>
-                            <td><a class="product-image" title="Primis in faucibus" href="#">
-                                    <img alt="Primis in faucibus" src="{{asset('upload/images/product')}}/{{$nd->options->img}}">
-                                </a></td>
-                            <td>
-                                <a href="#">{{$nd->name}}</a>
+                        <form action="" method="post">
+                            {{csrf_field()}}
+                            @foreach($content as $key => $nd)
+                                {{--{{  dd($nd)}}--}}
+                                <tr>
 
-                            </td>
-                            <td class="qty">
-                                <div class="input-group">
-                                        <span class="input-group-btn">
-                                            <button class="btn" type="button">-</button>
-                                        </span>
-                                    <input type="number" class="form-control" value="{{$nd->qty}}">
-                                    <span class="input-group-btn">
-                                            <button class="btn" type="button">+</button>
-                                        </span>
-                                </div><!-- /input-group -->
-                            </td>
-                            <td class="subtotal">{{number_format($nd->options->sale).'%'}}</td>
-                            <td class="subtotal">{{number_format($nd->options->priceold)}}</td>
-                            <td class="subtotal">{{number_format($nd->options->priceold*$nd->qty)}}</td>
-                            <td class="grandtotal">{{number_format($nd->price*$nd->qty)}}</td>
-                        </tr>
+                                    <td><a class="product-image" title="Primis in faucibus" href="#">
+                                            <img alt="Primis in faucibus" src="{{asset('upload/images/product')}}/{{$nd->options->img}}">
+                                        </a></td>
+                                    <td>
+                                        <a href="#">{{$nd->name}}</a>
+                                        <input type="hidden" value=" {{$nd->id}}" name="id">
+
+                                    </td>
+                                    <td class="qty">
+                                        <div class="input-group">
+                                                {{--<span class="input-group-btn">--}}
+                                                    {{--<button class="btn" type="button">-</button>--}}
+                                                {{--</span>--}}
+                                            <input type="number" name="qty" class="form-control" value="{{$nd->qty}}">
+                                            {{--<span class="input-group-btn">--}}
+                                                    {{--<button class="btn" type="button">+</button>--}}
+                                                {{--</span>--}}
+                                        </div><!-- /input-group -->
+                                    </td>
+                                    <td class="text-center">
+                                        <a class="btn-remove" href="{{url('delete-card')}}/{{$nd->rowId}}">
+                                            <img src="{{asset('upload/delete.png')}}" width="50px" alt="">
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a class="updatecart" href="" >
+                                            <input type="hidden" name="row" value="{{$nd->rowId}}" >
+                                            <img src="{{asset('upload/update.jpg')}}" width="50px" alt="" >
+                                        </a>
+                                    </td>
+                                    <td class="subtotal">
+                                        {{number_format($nd->options->sale).'%'}}
+                                        <input type="hidden" value=" {{number_format($nd->options->sale)}}" name="sale">
+                                    </td>
+                                    <td class="subtotal">
+                                        {{number_format($nd->options->priceold)}}
+                                        <input type="hidden" value=" {{$nd->options->priceold}}" name="price">
+                                    </td>
+                                    <td class="subtotal">
+                                        {{number_format($nd->options->priceold*$nd->qty)}}
+                                        <input type="hidden" value=" {{$nd->options->priceold*$nd->qty}}" name="total">
+                                    </td>
+                                    <td class="grandtotal">
+                                        {{number_format($nd->price*$nd->qty)}}
+                                        <input type="hidden" value=" {{$nd->price*$nd->qty}}" name="grantotal">
+                                    </td>
+                                </tr>
                             @endforeach
+                        </form>
                         </tbody>
                     </table>
                 </div>
                 <div class="text-right">
                     <a href="{{asset('/')}}" class="btn btn-default btn-md">CONTINUE SHOPPING</a>
-                    <button type="button" class="btn btn-danger btn-md">UPDATE SHOPPING CART</button>
+                    {{--<button type="button" class="btn btn-danger btn-md">UPDATE SHOPPING CART</button>--}}
                 </div>
                 <div class="line2"></div>
                 <div class="row">

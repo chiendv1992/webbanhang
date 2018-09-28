@@ -67,8 +67,7 @@
                             </div>
                             <div class="control-group">
                                 <label class="control-label" for="focusedInput">Code </label>
-                                <div class="controls">
-                                    <input class="input-xlarge focused" id="focusedInput" type="text" name="code" value="{{ old('code',isset($product) ? $product['code'] : null) }}">
+                                <div class="controls">0<input class="input-xlarge focused" id="focusedInput" type="text" name="code" value="{{ old('code',isset($product) ? $product['code'] : null) }}">
                                     @if($errors->has('code'))
                                         <p style="color: red"> {{$errors->first('code')}} </p>
                                     @endif

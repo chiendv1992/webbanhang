@@ -22,10 +22,12 @@ class FrontendController extends Controller
         $categories = Category::all();
         $pecialproduct = Product::orderBy('id', 'desc')->take(4)->get();
         $top = Product::orderBy('id', 'desc')->take(4)->get();
+        $brands = Product::orderBy('id', 'asc')->take(10)->get();
 
         View::share('categories',$categories);
         View::share('pecialproduct',$pecialproduct);
         View::share('top',$top);
+        View::share('brands',$brands);
 
     }
     public function index()
@@ -38,7 +40,7 @@ class FrontendController extends Controller
         $banner = Banner::all();
         $hotdeals = Product::orderBy('id', 'desc')->take(4)->get();
         $featured = Product::orderBy('id', 'asc')->take(8)->get();
-        $brands = Product::orderBy('id', 'asc')->take(10)->get();
+
         return view('frontend.index',
             [
                 'banner'=>$banner,
@@ -48,8 +50,7 @@ class FrontendController extends Controller
                 'lastnew'=>$lastnew,
                 'clientssay'=>$clientssay,
                 'bestseller'=>$bestseller,
-                'hotsale'=>$hotsale,
-                'brands'=>$brands,
+                'hotsale'=>$hotsale
              ]);
     }
     public function grid($id)
@@ -144,6 +145,16 @@ class FrontendController extends Controller
     public function deletecard($id)
     {
         Cart::remove($id);
+        return redirect()->route('card');
+    }
+    public function updatecart(Request $request,$id)
+    {
+        $update = Cart::find($id);
+        $rowid = $request->row;
+        Cart::get($rowid);
+        dd(Cart::get($rowid));
+        $update->qty = $request->qty;
+        Cart::update($update->rowid,$update->qty);
         return redirect()->route('card');
     }
     public function contact()

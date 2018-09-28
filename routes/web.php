@@ -106,3 +106,4 @@ Route::post('card',['as'=>'card','uses'=>'FrontendController@postcard']);
 
 
 Route::get('delete-card/{id}',['as'=>'deletecard','uses'=>'FrontendController@deletecard']);
+Route::post('update-card/{id}',['as'=>'updatecart','uses'=>'FrontendController@updatecart']);

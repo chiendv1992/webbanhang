@@ -16,14 +16,14 @@
                                 <div class="price-box">
                                     @if($peci->sale != 0)
                                         <p class="special-price">
-                                            <span class="price">{{$peci->price - ($peci->price*$peci->sale)/100}}</span>
+                                            <span class="price">{{number_format($peci->price - ($peci->price*$peci->sale)/100)}}</span>
                                         </p>
                                         <p class="old-price">
-                                            <span class="price">{{$peci->price}}</span>
+                                            <span class="price">{{number_format($peci->price)}}</span>
                                         </p>
                                     @else
                                         <p class="special-price">
-                                            <span class="price">{{$peci->price}}</span>
+                                            <span class="price">{{number_format($peci->price)}}</span>
                                         </p>
                                     @endif
                                 </div>

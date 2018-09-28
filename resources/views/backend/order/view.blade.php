@@ -126,9 +126,9 @@
                             <th>STT</th>
                             <th>Product</th>
                             <th>Date</th>
-                            <th>Type</th>
-                            <th>Image</th>
                             <th>Total</th>
+                            <th>Image</th>
+                            {{--<th>Total</th>--}}
                             <th>QTY</th>
                             <th>Sale</th>
                             <th>Actions (View - Edit - Delete)</th>
@@ -141,10 +141,10 @@
                                 <td>{{$orderdetail->id}}</td>
                                 <td class="center">{{$orderdetail->product->name}}</td>
                                 <td class="center">{{$orderdetail->order->date_orders}}</td>
-                                <td class="center">{{$orderdetail->order->total}}</td>
-                                <td class="center">{{$orderdetail->product->image}}</td>
-                                <td class="center">{{$orderdetail->order->type}}</td>
-                                <td class="center">{{$orderdetail->order->qty}}</td>
+                                <td class="center">{{$orderdetail->price_unit}}</td>
+                                <td class="center"><img src="{{asset('upload/images/')}}/{{$orderdetail->product->image}}" alt=""></td>
+                                {{--<td class="center">{{$orderdetail->order->type}}</td>--}}
+                                <td class="center">{{$orderdetail->qty}}</td>
                                 <td class="center">{{$orderdetail->product->sale}}</td>
                                 <td class="center">
                                     <a class="btn btn-info" href="{{asset('order/edit')}}/{{$orderdetail->id}}">

@@ -82,11 +82,21 @@ Route::group(['middleware'=>'auth'], function()
 
             Route::get('delete/{id}',['as'=>'admin.banner.destroy','uses'=>'BannerController@destroy']);
         });
+		Route::group(['prefix'=>'contact'], function()
+        {
+            Route::get('list',['as'=>'admin.contact.list','uses'=>'ContactController@index']);
+
+            Route::get('edit/{id}',['as'=>'admin.contact.edit','uses'=>'ContactController@edit']);
+            Route::post('edit/{id}',['as'=>'admin.contact.update','uses'=>'ContactController@update']);
+
+            Route::get('delete/{id}',['as'=>'admin.contact.destroy','uses'=>'ContactController@destroy']);
+        });
 		Route::group(['prefix'=>'order'], function()
         {
             Route::get('list',['as'=>'admin.order.list','uses'=>'OrderController@index']);
 
             Route::get('show/{id}',['as'=>'admin.order.edit','uses'=>'OrderController@show']);
+
             Route::post('show/{id}',['as'=>'admin.order.update','uses'=>'OrderController@update']);
 
             Route::get('delete/{id}',['as'=>'admin.order.destroy','uses'=>'OrderController@destroy']);
@@ -99,11 +109,21 @@ Route::get('detail/product/{id}',['as'=>'grid','uses'=>'FrontendController@detai
 
 Route::get('purchase/{id}/{slug}',['as'=>'purchase','uses'=>'FrontendController@purchase']);
 
-Route::get('contact',['as'=>'card','uses'=>'FrontendController@contact']);
+Route::get('contact',['as'=>'contact','uses'=>'FrontendController@contact']);
+Route::post('contact',['as'=>'contact.store','uses'=>'FrontendController@storecontact']);
 
 Route::get('card',['as'=>'card','uses'=>'FrontendController@card']);
 Route::post('card',['as'=>'card','uses'=>'FrontendController@postcard']);
 
 
+Route::post('search',['as'=>'search','uses'=>'FrontendController@search']);
+
 Route::get('delete-card/{id}',['as'=>'deletecard','uses'=>'FrontendController@deletecard']);
 Route::post('update-card/{id}',['as'=>'updatecart','uses'=>'FrontendController@updatecart']);
+
+Route::get('registration',['as'=>'register','uses'=>'FrontendController@getregister']);
+Route::post('registration',['as'=>'auth.register','uses'=>'FrontendController@postregister']);
+
+Route::get('login',['as'=>'login', 'uses'=>'FrontendController@getLogin']);
+Route::post('login',['as'=>'login', 'uses'=>'FrontendController@postLogin']);
+Route::get('logout',['as'=>'login', 'uses'=>'FrontendController@getLogout']);

@@ -9,15 +9,16 @@
             </div>
             <div class="topbar-right">
                 <ul class="topbar-nav clearfix">
-                    <li><a href="#" class="login">Login</a></li>
+
+                    <li><a href="" class="login">Login</a></li>
                     <li class="dropdown">
-                        <a href="#" class="account dropdown-toggle" data-toggle="dropdown">My Account</a>
+                        <a href="#" class="account dropdown-toggle" data-toggle="dropdown">My Acount</a>
                         <ul class="dropdown-menu dropdown-menu-right">
                             <li><a title="My Account" href="account.html">My Account</a></li>
-                            <li><a title="My Wishlist" href="wishlist.html">My Wishlist</a></li>
+                            {{--<li><a title="My Wishlist" href="wishlist.html">My Wishlist</a></li>--}}
                             <li><a title="My Cart" href="{{url('/card')}}">My Cart</a></li>
-                            <li><a title="Checkout" href="checkout.html">Checkout</a></li>
-                            <li><a title="Testimonial" href="testimonial.html">Testimonial</a></li>
+                            {{--<li><a title="Checkout" href="checkout.html">Checkout</a></li>--}}
+                            {{--<li><a title="Testimonial" href="testimonial.html">Testimonial</a></li>--}}
                         </ul>
                     </li>
                     <li class="dropdown">
@@ -78,10 +79,10 @@
                         <div class="dropdown">
                             <button type="button" class="btn" data-toggle="dropdown">All category <span class="fa fa-angle-down"></span></button>
                             <ul class="dropdown-menu dropdown-menu-right">
-                                <li><a href="#">Computer</a></li>
-                                <li><a href="#">Camera</a></li>
-                                <li><a href="#">Smart Phone</a></li>
-                                <li><a href="#">Electronic</a></li>
+                                {{--<li><a href="#">Computer</a></li>--}}
+                                {{--<li><a href="#">Camera</a></li>--}}
+                                {{--<li><a href="#">Smart Phone</a></li>--}}
+                                {{--<li><a href="#">Electronic</a></li>--}}
                             </ul>
                         </div>
                         <button type="submit" class="btn btn-danger"><span class="fa fa-search"></span></button>
@@ -149,8 +150,8 @@
                     <ul class="menu clearfix visible-lg visible-md">
                         <li class="active"><a href="#">Home</a></li>
                         <li><a href="#">Service</a></li>
-                        <li><a href="#">Introduce</a></li>
-                        <li><a href="#">Introduce</a></li>
+                        {{--<li><a href="{{url('/login')}}">Login</a></li>--}}
+                        <li><a href="{{url('/registration')}}">Register</a></li>
                         <li><a href="{{url('/contact')}}">Contact</a></li>
                         <li><a href="#">new arrivals</a></li>
                     </ul>

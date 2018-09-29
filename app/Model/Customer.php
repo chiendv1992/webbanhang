@@ -14,6 +14,10 @@ class Customer extends Model
 	public $timestamps = false; 
     public function order()
 	{
-		return $this->hasMany('App\Model\Order','customer_id');
+		return $this->hasMany('App\Model\Order','id');
+	}
+	public function comment()
+	{
+		return $this->hasMany('App\Model\Comment','id');
 	}
 }

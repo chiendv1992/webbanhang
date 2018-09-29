@@ -14,10 +14,14 @@ class Comment extends Model
 	public $timestamps = false; 
     public function order()
 	{
-		return $this->hasMany('App\Model\Order','customer_id');
+		return $this->hasMany('App\Model\Order','id');
 	}
 	public function product()
 	{
-		return $this->belongsTo('App\Model\Order','product_id');
+		return $this->belongsTo('App\Model\Product','product_id');
+	}
+	public function customer()
+	{
+		return $this->belongsTo('App\Model\Customer','customer_id');
 	}
 }

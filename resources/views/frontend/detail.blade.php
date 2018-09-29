@@ -141,62 +141,29 @@
                         </div>
                     </div><!-- /.product-tab -->
                 </div><!-- /.product-view -->
-                <div class="featuredproductslider-container">
-                    <div class="title-group1"><h2>Upsell products</h2></div>
-                    <div id="featured-products" class="owl-container">
-                        <div class="owl">
-                            @foreach($usell as $us)
-                                <div class='productslider-item item'>
-                                <div class="item-inner">
-                                    <div class="images-container">
-                                        <div class="product_icon">
-                                            <div class='new-icon'><span>new</span></div>
-                                        </div>
-                                        <a href="{{url('/detail/product')}}/{{$us->id}}" title="Nunc facilisis" class="product-image">
-                                            <img src="{{asset('upload/images/product/')}}/{{$us->image}}" alt="Nunc facilisis" />
-                                        </a>
-                                        <div class="box-hover">
-                                            <ul class="add-to-links">
-                                                {{--<li><a href="#" class="link-quickview">Quick View</a></li>--}}
-                                                {{--<li><a href="#" class="link-wishlist">Add to Wishlist</a></li>--}}
-                                                {{--<li><a href="#" class="link-compare">Add to Compare</a></li>--}}
-                                                <li><a href="{{asset('purchase/')}}/{{$us->id}}/{{$us->slug}}" class="link-cart">Add to Cart</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="des-container">
-                                        <h2 class="product-name"><a href="{{url('/detail/product')}}/{{$us->id}}" title="Nunc facilisis">{{$us->name}}</a></h2>
-                                        <div class="price-box">
-                                            <p class="special-price">
-                                                <span class="price-label">Special Price</span>
-                                                <span class="price">
-                                                    @if($us->sale!=0)
-                                                        {{number_format($us->price - $us->sale*$us->price/100)}}
-                                                    @endif
-                                                </span>
-                                            </p>
-                                            <p class="old-price">
-                                                <span class="price-label">Regular Price: </span>
-                                                <span class="price">
-                                                    @if($us->sale!=0)
-                                                    {{number_format($us->price)}}
-                                                        @endif
-                                                </span>
-                                            </p>
-                                        </div>
-                                        <div class="ratings">
-                                            <div class="rating-box">
-                                                <div class="rating" style="width:67%"></div>
-                                            </div>
-                                            <span class="amount"><a href="#"></a></span>
-                                        </div>
-                                    </div>
+                <hr>
+                <div class="col-sm-12">
+                    <div class="col-sm-12">
+                        <div class="col-md-8">ádsd</div>
+                        <div class="col-md-3">name</div>
+
+                    </div>
+                    <form action="" method="post">
+                        {{csrf_field()}}
+                        <div>
+                            <h2>Comment </h2>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <textarea class="form-control" rows="5" name="contents"></textarea>
+
                                 </div>
                             </div>
-                           @endforeach
                         </div>
-                    </div>
-                </div><!-- /.featuredproductslider-container -->
+                        <button type="submit" class="btn btn-default btn-lg">Send Message </button>
+                    </form>
+                </div>
             </div><!-- /.col-right -->
             <div class="col-sm-3 col-left">
                 <div class="block">

@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Frontend\RegisterRequests;
+use App\Http\Requests\LoginRequest;
+use App\User;
 use Illuminate\Http\Request;
 use App\Model\Category;
 use App\Model\Product;
@@ -14,6 +17,12 @@ use Illuminate\Support\Facades\View;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Session;
 use App\Http\Requests\Card\CheckoutRequest;
+use App\Http\Requests\Contact\AddContactRequest;
+use App\Model\Comment;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
+
+
 
 class FrontendController extends Controller
 {
@@ -28,6 +37,8 @@ class FrontendController extends Controller
         View::share('pecialproduct',$pecialproduct);
         View::share('top',$top);
         View::share('brands',$brands);
+
+
 
     }
     public function index()
@@ -160,5 +171,75 @@ class FrontendController extends Controller
     public function contact()
     {
         return view('frontend.contact');
+    }
+    public function storecontact(AddContactRequest $request)
+    {
+        $customer = new Customer();
+        $customer->name = $request->name;
+        $customer->email = $request->email;
+        $customer->address = $request->address;
+        $customer->phone = $request->phone;
+        $customer->gender = $request->gender;
+        $customer->status = 1;
+        $customer->save();
+
+        $comment = new Comment();
+        $comment->content = $request->contents;
+        $comment->customer_id = $customer->id;
+        $comment->status = 1;
+
+        $comment->save();
+        return redirect()->route('contact')->with('success','You Send Message Success !!');
+
+    }
+    public function search(Request $request)
+    {
+        dd(123);
+        $product = new Product();
+        $seach=$request->seach;
+        $data = Product::where('name','like',"%$seach%")->orWhere('price','like',"%$seach%")->paginate(10);
+        View::share('product',$product);
+        View::share('data',$data);
+    }
+    public function getregister()
+    {
+        return view ('frontend.register');
+    }
+    public function postregister(RegisterRequests $request)
+    {
+
+        $users = new User();
+
+        $users->name = $request->name;
+        $users->email = $request->email;
+        $users->password = bcrypt($request->password);
+        $users->level = 0;
+        $users->save();
+        return redirect('/registration')->with('success','You Register Success !!!');
+    }
+    public function getLogin()
+    {
+        return view('frontend.login');
+    }
+    public function postLogin(LoginRequest $request)
+    {
+        $login = [
+            'email' => $request->email,
+            'password' => $request->password,
+            'level' => 0
+        ];
+        if (Auth::attempt($login))
+        {
+            return redirect('/');
+        }
+        else
+        {
+            return redirect()->back()->with('err','Login Unsuccessful');
+        }
+
+    }
+    public function getLogout(){
+        Auth::logout();
+        return redirect('/');
     }
 }

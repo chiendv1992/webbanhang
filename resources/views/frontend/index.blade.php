@@ -81,7 +81,8 @@
                         <div id="timely-owl" class="owl-container">
                             <div class="owl">
                                 @foreach($hotdeals as $hotdeal)
-                                    <div class='timer-item item'>
+                                    @if($hotdeal->status==1)
+                                        <div class='timer-item item'>
                                     <div class="item-inner">
                                         <div class="images-container" style="height:200px">
                                             <a href="{{url('/detail/product')}}/{{$hotdeal->id}}" title="Fusce aliquam" class="product-image">
@@ -116,6 +117,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                    @endif
                                 @endforeach
                             </div>
                         </div><!-- /#timely-owl -->
@@ -127,51 +129,53 @@
                         <div id="featured-products" class="owl-container">
                             <div class="owl">
                                 @foreach($featured as $key =>$fea)
-                                    <div class='productslider-item item'>
-                                    <div class="item-inner">
-                                        <div class="images-container" style="height:200px">
-                                            {{--<div class="product_icon">--}}
-                                                {{--<div class='new-icon'><span>new </span></div>--}}
-                                            {{--</div>--}}
-                                            <a href="{{url('/detail/product')}}/{{$fea->id}}" title="Nunc facilisis" class="product-image">
-                                                <img src="{{asset('upload/images/product/')}}/{{$fea->image}}" alt="Nunc facilisis" />
-                                            </a>
-                                            <div class="box-hover">
-                                                <ul class="add-to-links">
-                                                    {{--<li><a href="#" class="link-quickview">Quick View</a></li>--}}
-                                                    {{--<li><a href="#" class="link-wishlist">Add to Wishlist</a></li>--}}
-                                                    {{--<li><a href="#" class="link-compare">Add to Compare</a></li>--}}
-                                                    <li><a href="{{asset('purchase/')}}/{{$fea->id}}/{{$fea->slug}}" class="link-cart">Add to Cart</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="des-container">
-                                            <h2 class="product-name"><a href="{{url('/detail/product')}}/{{$fea->id}}" title="Nunc facilisis">{{$fea->name}}</a></h2>
-                                            <div class="price-box">
-                                                <p class="special-price">
-                                                    <span class="price-label">Special Price</span>
-                                                    <span class="price">
-                                                        {{number_format($fea->price - $fea->price*$fea->sale/100)}}
-                                                    </span>
-                                                </p>
-                                                <p class="old-price">
-                                                    <span class="price-label">Regular Price: </span>
-                                                    <span class="price">
-                                                        @if($fea->sale!=0)
-                                                            {{number_format($fea->price)}}</span>
-                                                        @endif
-                                                </p>
-                                            </div>
-                                            <div class="ratings">
-                                                <div class="rating-box">
-                                                    <div class="rating" style="width:67%"></div>
+                                    @if($fea->status == 1)
+                                        <div class='productslider-item item'>
+                                        <div class="item-inner">
+                                            <div class="images-container" style="height:200px">
+                                                {{--<div class="product_icon">--}}
+                                                    {{--<div class='new-icon'><span>new </span></div>--}}
+                                                {{--</div>--}}
+                                                <a href="{{url('/detail/product')}}/{{$fea->id}}" title="Nunc facilisis" class="product-image">
+                                                    <img src="{{asset('upload/images/product/')}}/{{$fea->image}}" alt="Nunc facilisis" />
+                                                </a>
+                                                <div class="box-hover">
+                                                    <ul class="add-to-links">
+                                                        {{--<li><a href="#" class="link-quickview">Quick View</a></li>--}}
+                                                        {{--<li><a href="#" class="link-wishlist">Add to Wishlist</a></li>--}}
+                                                        {{--<li><a href="#" class="link-compare">Add to Compare</a></li>--}}
+                                                        <li><a href="{{asset('purchase/')}}/{{$fea->id}}/{{$fea->slug}}" class="link-cart">Add to Cart</a></li>
+                                                    </ul>
                                                 </div>
-                                                {{--<span class="amount"><a href="#">3 Review(s)</a></span>--}}
+                                            </div>
+                                            <div class="des-container">
+                                                <h2 class="product-name"><a href="{{url('/detail/product')}}/{{$fea->id}}" title="Nunc facilisis">{{$fea->name}}</a></h2>
+                                                <div class="price-box">
+                                                    <p class="special-price">
+                                                        <span class="price-label">Special Price</span>
+                                                        <span class="price">
+                                                            {{number_format($fea->price - $fea->price*$fea->sale/100)}}
+                                                        </span>
+                                                    </p>
+                                                    <p class="old-price">
+                                                        <span class="price-label">Regular Price: </span>
+                                                        <span class="price">
+                                                            @if($fea->sale!=0)
+                                                                {{number_format($fea->price)}}</span>
+                                                            @endif
+                                                    </p>
+                                                </div>
+                                                <div class="ratings">
+                                                    <div class="rating-box">
+                                                        <div class="rating" style="width:67%"></div>
+                                                    </div>
+                                                    {{--<span class="amount"><a href="#">3 Review(s)</a></span>--}}
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                 @endforeach
+                                    @endif
+                                @endforeach
 
                             </div>
                         </div> <!-- /#featured-products -->
@@ -201,7 +205,8 @@
                                     <div class="owl">
                                         {{-- arrival product--}}
                                         @foreach($arrival as $arri)
-                                            <div class='productslider-item item'>
+                                            @if($arri->status==1)
+                                                <div class='productslider-item item'>
                                             <div class="item-inner">
                                                 <div class="images-container" style="height: 200px">
                                                     <div class="product_icon"  >
@@ -243,6 +248,7 @@
                                                 </div>
                                             </div>
                                         </div>
+                                            @endif
                                        @endforeach
                                     </div>
                                 </div><!-- /#new-products -->
@@ -251,9 +257,10 @@
                                 <div id="popular-products" class="owl-container">
                                     <div class="owl">
                                         @foreach($arrival as $arri)
-                                            <div class='productslider-item item'>
+                                            @if($arri->status == 1)
+                                             <div class='productslider-item item'>
                                                 <div class="item-inner">
-                                                    <div class="images-container">
+                                                    <div class="images-container" style="height: 200px">
                                                         <div class="product_icon">
                                                             <div class='new-icon'><span>new</span></div>
                                                             <div class="sale-icon"><span>sale</span></div>
@@ -274,7 +281,7 @@
                                                         <h2 class="product-name"><a href="#" title="Nunc facilisis">Demonstraverunt lectores</a></h2>
                                                         <div class="price-box">
                                                             <p class="special-price">
-                                                                <span class="price-label">{{$arri->price}}</span>
+                                                                <span class="price-label">{{number_format($arri->price)}}</span>
                                                                 <span class="price">{{number_format($arri->price-$arri->price*$arri->sale/100)}}</span>
                                                             </p>
                                                             <p class="old-price">
@@ -294,6 +301,7 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            @endif
                                         @endforeach
 
                                     </div>
@@ -303,9 +311,10 @@
                                 <div id="random-products" class="owl-container">
                                     <div class="owl">
                                         @foreach($arrival as $arri)
+                                            @if($arri->status==1)
                                             <div class='productslider-item item'>
                                                 <div class="item-inner">
-                                                    <div class="images-container">
+                                                    <div class="images-container" style="height: 200px">
                                                         <div class="product_icon">
                                                             <div class='new-icon'><span>new</span></div>
                                                             <div class="sale-icon"><span>sale</span></div>
@@ -327,22 +336,27 @@
                                                         <div class="price-box">
                                                             <p class="special-price">
                                                                 <span class="price-label">{{$arri->price}}</span>
-                                                                <span class="price">$169.99</span>
+                                                                <span class="price">{{number_format($arri->price-$arri->sale*$arri->price/100)}}</span>
                                                             </p>
                                                             <p class="old-price">
                                                                 <span class="price-label">Regular Price: </span>
-                                                                <span class="price">$189.00</span>
+                                                                <span class="price">
+                                                                    @if($arri->sale!=0)
+                                                                        {{$arri->price}}
+                                                                        @endif
+                                                                </span>
                                                             </p>
                                                         </div>
                                                         <div class="ratings">
                                                             <div class="rating-box">
                                                                 <div class="rating" style="width:67%"></div>
                                                             </div>
-                                                            <span class="amount"><a href="#">3 Review(s)</a></span>
+                                                            {{--<span class="amount"><a href="#">3 Review(s)</a></span>--}}
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
+                                            @endif
                                         @endforeach
                                     </div>
                                 </div><!-- /#random-products -->
@@ -376,8 +390,9 @@
                         <div id="latest-news" class="owl-container">
                             <div class="owl">
                                 @foreach($lastnew as $ln)
+                                    @if($ln->status==1)
                                     <div>
-                                    <div class="item-inner">
+                                        <div class="item-inner">
                                         <div class="images-container">
                                             <a href="#"> <img alt="" src="{{asset('upload/images/product/')}}/{{$ln->image}}" /> </a>
                                         </div>
@@ -395,7 +410,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                    </div>
+                                    @endif
                                 @endforeach
                             </div>
                         </div>
@@ -407,36 +423,38 @@
                         <div id="clients-say" class="owl-container">
                             <div class="owl">
                                 @foreach($clientssay as $clientssays)
-                                    <div class='testimonial-list'>
-                                    <div class="testimonial-content">
-                                        <div class="content">
-                                            <a href="#">Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros...</a>
-                                        </div>
-                                        <div class="post-by">
-                                            <div class="testimonial-content-avatar">
-                                                <img src="{{asset('upload/images/product/')}}/{{$clientssays->image}}" alt="test" />
+                                    @if($clientssays->status==1)
+                                        <div class='testimonial-list'>
+                                            <div class="testimonial-content">
+                                                <div class="content">
+                                                    <a href="#">Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros...</a>
+                                                </div>
+                                                <div class="post-by">
+                                                    <div class="testimonial-content-avatar">
+                                                        <img src="{{asset('upload/images/product/')}}/{{$clientssays->image}}" alt="test" />
+                                                    </div>
+                                                    <div class="box-author">
+                                                        <span class="testimonial-author">Mr rooney</span>
+                                                        <span class="testimonial-date">March 24, 2015</span>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div class="box-author">
-                                                <span class="testimonial-author">Mr rooney</span>
-                                                <span class="testimonial-date">March 24, 2015</span>
+                                            <div class="testimonial-content">
+                                                <div class="content">
+                                                    <a href="#">Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis</a>
+                                                </div>
+                                                <div class="post-by">
+                                                    <div class="testimonial-content-avatar">
+                                                        <img src="{{asset('upload/images/product/')}}/{{$clientssays->image}}" alt="test" />
+                                                    </div>
+                                                    <div class="box-author">
+                                                        <span class="testimonial-author">Robert Carlo</span>
+                                                        <span class="testimonial-date">January 30, 2015</span>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="testimonial-content">
-                                        <div class="content">
-                                            <a href="#">Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis</a>
-                                        </div>
-                                        <div class="post-by">
-                                            <div class="testimonial-content-avatar">
-                                                <img src="{{asset('upload/images/product/')}}/{{$clientssays->image}}" alt="test" />
-                                            </div>
-                                            <div class="box-author">
-                                                <span class="testimonial-author">Robert Carlo</span>
-                                                <span class="testimonial-date">January 30, 2015</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                    @endif
                                     @endforeach
                             </div>
                         </div>
@@ -446,7 +464,8 @@
                     <div class="title-group"><h2>Bestseller</h2></div>
                     <div class="product-list">
                         @foreach($bestseller as $best)
-                        <div class="products-grid">
+                            @if($best->status==1)
+                                <div class="products-grid">
                             <div class="images-container">
                                 <a class="product-image" title="Accumsan elit " href="asset('upload/images/product/')}}/{{$best->image}}"><img alt="Accumsan elit " src="{{asset('upload/images/product/')}}/{{$best->image}}"></a>
                             </div>
@@ -471,6 +490,7 @@
                                 </div>
                             </div>
                         </div>
+                            @endif
                         @endforeach
                     </div><!-- /.product-list -->
                 </div>
@@ -478,7 +498,8 @@
                     <div class="title-group"><h2>Hot </h2></div>
                     <div class="product-list">
                         @foreach($hotsale as $hot)
-                        <div class="products-grid">
+                            @if($hot->status ==1)
+                                <div class="products-grid">
                             <div class="images-container">
                                 <a class="product-image" title="Accumsan elit " href="#"><img alt="Accumsan elit " src="{{asset('upload/images/product/')}}/{{$hot->image}}"></a>
                             </div>
@@ -504,6 +525,7 @@
                                 </div>
                             </div>
                         </div>
+                            @endif
                             @endforeach()
                     </div><!-- /.product-list -->
                 </div>

@@ -8,7 +8,7 @@
                 @foreach($brands as $brand)
                     <div class='item'>
                         <div class="item-innner">
-                            <a href="#" title="{{$brand->name}}"><img src="{{asset('upload/images/product/')}}/{{$brand->image}}" alt="" /></a>
+                            <a href="#" title="{{$brand->name}}"><img src="{{asset('upload/images/product/')}}/{{$brand->image}}" alt="" width="250px"/></a>
                         </div>
                     </div>
                 @endforeach

@@ -52,7 +52,7 @@
                                 </div>
                             </div>
                             <div class="form-actions">
-                                <button type="submit" class="btn btn-primary">Save Category</button>
+                                <button type="submit" class="btn btn-primary">Save Banner</button>
                                 <button class="btn">Cancel</button>
                             </div>
                         </fieldset>

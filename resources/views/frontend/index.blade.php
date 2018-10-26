@@ -467,10 +467,10 @@
                             @if($best->status==1)
                                 <div class="products-grid">
                             <div class="images-container">
-                                <a class="product-image" title="Accumsan elit " href="asset('upload/images/product/')}}/{{$best->image}}"><img alt="Accumsan elit " src="{{asset('upload/images/product/')}}/{{$best->image}}"></a>
+                                <a class="product-image" title="Accumsan elit " href="{{url('/detail/product')}}/{{$best->id}}"><img alt="Accumsan elit " src="{{asset('upload/images/product/')}}/{{$best->image}}"></a>
                             </div>
                             <div class="des-container">
-                                <h2 class="product-name"><a title="Accumsan elit " href="asset('upload/images/product/')}}/{{$best->image}}">{{$best->name}}</a></h2>
+                                <h2 class="product-name"><a title="Accumsan elit " href="{{url('/detail/product')}}/{{$best->id}}">{{$best->name}}</a></h2>
                                 <div class="ratings">
                                     <div class="rating-box">
                                         <div style="width:67%" class="rating"></div>
@@ -501,10 +501,10 @@
                             @if($hot->status ==1)
                                 <div class="products-grid">
                             <div class="images-container">
-                                <a class="product-image" title="Accumsan elit " href="#"><img alt="Accumsan elit " src="{{asset('upload/images/product/')}}/{{$hot->image}}"></a>
+                                <a class="product-image" title="Accumsan elit " href="{{url('/detail/product')}}/{{$hot->id}}"><img alt="Accumsan elit " src="{{asset('upload/images/product/')}}/{{$hot->image}}"></a>
                             </div>
                             <div class="des-container">
-                                <h2 class="product-name"><a title="Accumsan elit " href="#">{{$hot->name}} </a></h2>
+                                <h2 class="product-name"><a title="Accumsan elit " href="{{url('/detail/product')}}/{{$hot->id}}">{{$hot->name}} </a></h2>
                                 <div class="ratings">
                                     <div class="rating-box">
                                         <div style="width:67%" class="rating"></div>

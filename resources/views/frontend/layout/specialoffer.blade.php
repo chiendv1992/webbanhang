@@ -7,12 +7,12 @@
                     @foreach($pecialproduct as $peci)
                         <div class="item-inner first">
                             <div class="images-container">
-                                <a href="#" title="Primis in faucibus" class="product-image">
+                                <a href="{{url('/detail/product')}}/{{$peci->id}}" title="Primis in faucibus" class="product-image">
                                     <img src="{{asset('upload/images/product/')}}/{{$peci->image}}" alt="Primis in faucibus" />
                                 </a>
                             </div>
                             <div class="des-container">
-                                <h2 class="product-name"><a href="#" title="Primis in faucibus">{{$peci->name}}</a></h2>
+                                <h2 class="product-name"><a href="{{url('/detail/product')}}/{{$peci->id}}" title="Primis in faucibus">{{$peci->name}}</a></h2>
                                 <div class="price-box">
                                     @if($peci->sale != 0)
                                         <p class="special-price">
@@ -41,12 +41,12 @@
                     @foreach($pecialproduct as $peci)
                         <div class="item-inner first">
                             <div class="images-container">
-                                <a href="#" title="Primis in faucibus" class="product-image">
+                                <a href="{{url('/detail/product')}}/{{$peci->id}}" title="Primis in faucibus" class="product-image">
                                     <img src="{{asset('upload/images/product/')}}/{{$peci->image}}" alt="Primis in faucibus" />
                                 </a>
                             </div>
                             <div class="des-container">
-                                <h2 class="product-name"><a href="#" title="Primis in faucibus">{{$peci->name}}</a></h2>
+                                <h2 class="product-name"><a href="{{url('/detail/product')}}/{{$peci->id}}" title="Primis in faucibus">{{$peci->name}}</a></h2>
                                 <div class="price-box">
                                     @if($peci->sale != 0)
                                         <p class="special-price">
@@ -75,12 +75,12 @@
                     @foreach($pecialproduct as $peci)
                         <div class="item-inner first">
                             <div class="images-container">
-                                <a href="#" title="Primis in faucibus" class="product-image">
+                                <a href="{{url('/detail/product')}}/{{$peci->id}}" title="Primis in faucibus" class="product-image">
                                     <img src="{{asset('upload/images/product/')}}/{{$peci->image}}" alt="Primis in faucibus" />
                                 </a>
                             </div>
                             <div class="des-container">
-                                <h2 class="product-name"><a href="#" title="Primis in faucibus">{{$peci->name}}</a></h2>
+                                <h2 class="product-name"><a href="{{url('/detail/product')}}/{{$peci->id}}" title="Primis in faucibus">{{$peci->name}}</a></h2>
                                 <div class="price-box">
                                     @if($peci->sale != 0)
                                         <p class="special-price">

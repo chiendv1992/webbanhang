@@ -9,12 +9,12 @@
                     <div class="row">
                         <div class="col-xs-6">
                             <div class="image-cat">
-                                <a href="#/"><img alt="Electronic" src="{{asset('upload/images/product/')}}/{{$tp->image}}"></a>
+                                <a href="{{url('/detail/product')}}/{{$tp->id}}"><img alt="Electronic" src="{{asset('upload/images/product/')}}/{{$tp->image}}"></a>
                             </div>
                         </div>
                         <div class="col-xs-6">
                             <div class="name-cat"><h3>{{$tp->name}}</h3></div>
-                            <a class="view-more" href="#">view more</a>
+                            <a class="view-more" href="{{url('/detail/product')}}/{{$tp->id}}">view more</a>
                         </div>
                     </div>
                     {{--<div class="list-cat">--}}

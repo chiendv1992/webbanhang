@@ -143,11 +143,7 @@
                 </div><!-- /.product-view -->
                 <hr>
                 <div class="col-sm-12">
-                    <div class="col-sm-12">
-                        <div class="col-md-8">ádsd</div>
-                        <div class="col-md-3">name</div>
-
-                    </div>
+                   
                     <form action="" method="post">
                         {{csrf_field()}}
                         <div>

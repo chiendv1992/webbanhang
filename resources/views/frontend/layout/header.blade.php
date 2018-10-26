@@ -5,6 +5,7 @@
                 <ul class="topbar-nav clearfix">
                     <li><span class="phone">0(123) 456 789</span></li>
                     <li><span class="email">info@plazathemes.com</span></li>
+                    <!-- <li><span class="address">info@plazathemes.com</span></li> -->
                 </ul>
             </div>
             <div class="topbar-right">
@@ -21,7 +22,7 @@
                             {{--<li><a title="Testimonial" href="testimonial.html">Testimonial</a></li>--}}
                         </ul>
                     </li>
-                    <li class="dropdown">
+                   <!--  <li class="dropdown">
                         <a href="#" class="currency dropdown-toggle" data-toggle="dropdown">USD</a>
                         <ul class="dropdown-menu dropdown-menu-right">
                             <li><a href="#">Euro</a></li>
@@ -34,7 +35,7 @@
                             <li><a href="#"><img src="images/flag-us.png" alt=""> &nbsp;English</a></li>
                             <li><a href="#"><img src="images/flag-spain.png" alt=""> &nbsp;Spanish</a></li>
                         </ul>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
         </div><!-- /.container -->
@@ -79,10 +80,10 @@
                         <div class="dropdown">
                             <button type="button" class="btn" data-toggle="dropdown">All category <span class="fa fa-angle-down"></span></button>
                             <ul class="dropdown-menu dropdown-menu-right">
-                                {{--<li><a href="#">Computer</a></li>--}}
-                                {{--<li><a href="#">Camera</a></li>--}}
-                                {{--<li><a href="#">Smart Phone</a></li>--}}
-                                {{--<li><a href="#">Electronic</a></li>--}}
+                                @foreach($categories as $cate)
+                                    <li><a href="{{asset('product/list/')}}/{{$cate->id}}">{{$cate->name}}</a></li>
+                                @endforeach
+                              
                             </ul>
                         </div>
                         <button type="submit" class="btn btn-danger"><span class="fa fa-search"></span></button>
@@ -148,12 +149,13 @@
                 </div>
                 <div class="col-md-9">
                     <ul class="menu clearfix visible-lg visible-md">
-                        <li class="active"><a href="#">Home</a></li>
+                        <li class="active"><a href="{{url('/')}}">Home</a></li>
+                        <li><a href="#">Introduce</a></li>
                         <li><a href="#">Service</a></li>
+                        <li><a href="#">New</a></li>
                         {{--<li><a href="{{url('/login')}}">Login</a></li>--}}
                         <li><a href="{{url('/registration')}}">Register</a></li>
-                        <li><a href="{{url('/contact')}}">Contact</a></li>
-                        <li><a href="#">new arrivals</a></li>
+                        <li><a href="{{url('/contact')}}">Contact</a></li>                      
                     </ul>
                 </div>
             </div>
@@ -171,43 +173,10 @@
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="#">Home</a></li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Computer <span class="fa fa-angle-down"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Desktop PC</a></li>
-                                <li><a href="#">Notebook</a></li>
-                                <li><a href="#">Gaming</a></li>
-                                <li><a href="#">Mouse &amp; Keyboard</a></li>
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Camera <span class="fa fa-angle-down"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Walkera</a></li>
-                                <li><a href="#">Fpv System &amp; Parts</a></li>
-                                <li><a href="#">RC Cars &amp; Parts</a></li>
-                                <li><a href="#">Helicopters &amp; Part</a></li>
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Smart Phone <span class="fa fa-angle-down"></span></a>									<ul class="dropdown-menu">
-                                <li><a href="#">Accessories for iPhone</a></li>
-                                <li><a href="#">Accessories for iPad</a></li>
-                                <li><a href="#">Accessories for Tablet PC</a></li>
-                                <li><a href="#">Tablet PC</a></li>
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Electtronic <span class="fa fa-angle-down"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Batteries &amp; Chargers</a></li>
-                                <li><a href="#">Headphone, Headset</a></li>
-                                <li><a href="#">Home Audio</a></li>
-                                <li><a href="#">Mp3 Player Accessories</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="#">New Arrivals</a></li>
+                        <li class="active"><a href="{{url('/')}}">Home</a></li> 
+                         @foreach($categories as $key => $cate)                          
+                            <li class="nosub"><a href="{{asset('product/list/')}}/{{$cate->id}}">{{$cate->name}}</a></li>                            
+                        @endforeach                     
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container -->

@@ -115,8 +115,9 @@ Route::post('contact',['as'=>'contact.store','uses'=>'FrontendController@storeco
 Route::get('card',['as'=>'card','uses'=>'FrontendController@card']);
 Route::post('card',['as'=>'card','uses'=>'FrontendController@postcard']);
 
+// Route::get('/search',['as'=>'search','uses'=>'FrontendController@getsearch']);
+Route::post('/search',['as'=>'search','uses'=>'FrontendController@search']);
 
-Route::post('search',['as'=>'search','uses'=>'FrontendController@search']);
 
 Route::get('delete-card/{id}',['as'=>'deletecard','uses'=>'FrontendController@deletecard']);
 Route::post('update-card/{id}',['as'=>'updatecart','uses'=>'FrontendController@updatecart']);

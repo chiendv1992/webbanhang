@@ -192,19 +192,27 @@ class FrontendController extends Controller
         return redirect()->route('contact')->with('success','You Send Message Success !!');
 
     }
+
+    public function getsearch()
+    {
+         return view('frontend.search');
+    }
+
     public function search(Request $request)
     {
-        dd(123);
+        // dd(123);
+        $cate = Category::all();
         $product = new Product();
-        $seach=$request->seach;
+        $seach = $request->seach;
         $data = Product::where('name','like',"%$seach%")->orWhere('price','like',"%$seach%")->paginate(10);
-        View::share('product',$product);
-        View::share('data',$data);
+        return view('frontend.search', ['data'=>$data, 'cate'=>$cate]);           
     }
+
     public function getregister()
     {
         return view ('frontend.register');
     }
+
     public function postregister(RegisterRequests $request)
     {
 
@@ -215,12 +223,15 @@ class FrontendController extends Controller
         $users->password = bcrypt($request->password);
         $users->level = 0;
         $users->save();
+
         return redirect('/registration')->with('success','You Register Success !!!');
     }
+
     public function getLogin()
     {
         return view('frontend.login');
     }
+    
     public function postLogin(LoginRequest $request)
     {
         $login = [

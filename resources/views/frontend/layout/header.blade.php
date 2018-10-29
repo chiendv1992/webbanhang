@@ -77,7 +77,7 @@
                     </div><!-- /.support-client -->
                     <form class="form-search"  method="post" action="{{route('search')}}">
                         {{csrf_field()}}
-                        <input type="text" class="input-text" name="search" id="search" placeholder="Search ...">
+                        <input type="text" class="input-text" name="search" id="search" placeholder="Search ..." value="">
                         <div class="dropdown">
                             <button type="button" class="btn" data-toggle="dropdown">All category <span class="fa fa-angle-down"></span></button>
                             <ul class="dropdown-menu dropdown-menu-right">

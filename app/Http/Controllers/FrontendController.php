@@ -201,10 +201,11 @@ class FrontendController extends Controller
     public function search(Request $request)
     {
         // dd(123);
+        dd($request);
         $cate = Category::all();
         $product = new Product();
         $seach = $request->seach;
-        $data = Product::where('name','like',"%$seach%")->orWhere('price','like',"%$seach%")->paginate(10);
+        $data = Product::where('name','like',"%$seach%")->paginate(10);
         return view('frontend.search', ['data'=>$data, 'cate'=>$cate]);           
     }
 
@@ -231,7 +232,7 @@ class FrontendController extends Controller
     {
         return view('frontend.login');
     }
-    
+
     public function postLogin(LoginRequest $request)
     {
         $login = [

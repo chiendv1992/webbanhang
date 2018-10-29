@@ -1,6 +1,6 @@
 @extends('frontend.master')
 @section('title')
-    {{$cate->name}}
+
 @endsection
 @section('content')
 <div class="breadcrumbs">
@@ -27,7 +27,7 @@
                <hr>
                 <div class="row products">
                     @foreach($data as $key=>$pro )                    
-                        @if($cate->id == $pro->cate_id)
+       
                             <div class="col-md-3 col-sm-6">
                                 <div class='productslider-item item'>
                                     <div class="item-inner">
@@ -73,7 +73,7 @@
                                     </div>
                                 </div>
                             </div>                       
-                        @endif
+                    
                     @endforeach
                 </div><!-- /.product -->
                 {{$data->links()}}

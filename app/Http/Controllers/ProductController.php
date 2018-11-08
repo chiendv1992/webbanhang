@@ -67,7 +67,7 @@ class ProductController extends Controller
         $product->qty = $request->qty;
         $product->status = $request->status;
         $product->save();
-        $product_id= $product->id;
+        $product_id = $product->id;
         // detail image
 
         if ($request->hasFile('images'))

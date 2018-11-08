@@ -49,7 +49,6 @@
                         </thead>
                         <tbody>
                         @foreach($product as $key => $pro)
-                            {{--{{dd($pro->category->name)}}--}}
                             <tr>
                                 <td>{{$pro->id}}</td>
                                 <td class="center">{{$pro->category->name}}</td>

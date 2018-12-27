@@ -11,9 +11,9 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function detail()
     {
-        //
+        return view('backend.user.detail');
     }
 
     /**

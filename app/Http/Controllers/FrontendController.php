@@ -200,13 +200,11 @@ class FrontendController extends Controller
 
     public function search(Request $request)
     {
-        // dd(123);
-        dd($request);
         $cate = Category::all();
         $product = new Product();
-        $seach = $request->seach;
-        $data = Product::where('name','like',"%$seach%")->paginate(10);
-        return view('frontend.search', ['data'=>$data, 'cate'=>$cate]);           
+        $search = $request->search;
+        $data = Product::where('name','like',"%$search%")->paginate(10);
+        return view('frontend.search', ['data'=>$data, 'cate'=>$cate]);
     }
 
     public function getregister()

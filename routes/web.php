@@ -91,6 +91,7 @@ Route::group(['middleware'=>'auth'], function()
 
             Route::get('delete/{id}',['as'=>'admin.contact.destroy','uses'=>'ContactController@destroy']);
         });
+
 		Route::group(['prefix'=>'order'], function()
         {
             Route::get('list',['as'=>'admin.order.list','uses'=>'OrderController@index']);
@@ -101,6 +102,18 @@ Route::group(['middleware'=>'auth'], function()
 
             Route::get('delete/{id}',['as'=>'admin.order.destroy','uses'=>'OrderController@destroy']);
         });
+
+        Route::group(['prefix'=>'user'], function()
+        {
+            Route::get('detail',['as'=>'admin.user.list','uses'=>'UserController@detail']);
+
+            Route::get('show/{id}',['as'=>'admin.user.edit','uses'=>'UserController@show']);
+
+            Route::post('show/{id}',['as'=>'admin.user.update','uses'=>'UserController@update']);
+
+            Route::get('delete/{id}',['as'=>'admin.user.destroy','uses'=>'UserController@destroy']);
+        });
+
 	});
 
 Route::get('/',['as'=>'index','uses'=>'FrontendController@index']);

@@ -128,7 +128,7 @@ class FrontendController extends Controller
         $customer->address = $request->address;
         $customer->phone = $request->phone;
         $customer->gender = $request->gender;
-        $customer->status = 0;
+        // $customer->status = 0;
         $customer->save();
 
         $orders = new Order();
